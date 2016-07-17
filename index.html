@@ -15,68 +15,65 @@
     <body ng-app="kookApp">
         {{"AngularJS Loaded"}}
 
-        <div ng-controller="kookController">
-            <h1>Gerecht toevoegen</h1>
-            <p>
-                <h3>Gerechtnaam</h3>
-                <input type="text" ng-model="newdish.name" placeholder="Naam van het gerecht">
-            </p>
-            <ul>
-                <li ng-repeat="ingredient in addedIngredients">
-                    {{ingredient.name}}
-                </li>
-            </ul>
-            <p>
-                <h3>Ingredienten</h3>
-                <input type="text" ng-model="newdish.ingredienten" placeholder="Voeg de ingredienten toe">
-                <button ng-click="addIngredient(newdish.ingredienten)">Add</button>
+         <div ng-controller="kookController">
 
+            <div style="background-color:lightgray;">
 
-
-
-
-
-                <div>
-                    <label ng-repeat="ingredient in ingredienten">
-                        <input
-                            type="checkbox"
-                            name="selectedIngredients[]"
-                            value="{{ingredient.name}}"
-                            ng-model="ingredient.selected"/>
-                        {{ingredient.name}}
-                    </label>
-                </div>
-
-
-            </p>
-
-
-
-
-
-
-            <button ng-click="addGerecht(newdish)">Toevoegen</button>
-
-            <h1>Gerechtenlijst incl ingredienten</h1>
-            <ul>
-                <li ng-repeat="gerecht in gerechten">
-                    {{ gerecht.name }}
+                <h1>Gerecht toevoegen</h1>
+                <p>
+                    <h3>Gerechtnaam</h3>
+                    <input type="text" ng-model="nieuwGerecht.name" placeholder="Naam van het gerecht">
+                </p>
+                <p>
+                <h2>{{nieuwGerecht.name}}</h2>
                     <ul>
-                        <li ng-repeat="ingredient in gerecht.ingredienten">
-                            {{ingredienten[ingredient].$value}}
+                        <li ng-repeat="item in selected">
+                            {{item.$value}}
                         </li>
                     </ul>
-                </li>
-            </ul>
+                </p>
 
-            <h1>Gerecht zoeken</h1>
-            <p>
-            <h3>Gerechtnaam</h3>
-            <input type="text" ng-model="newdish.name" placeholder="Zoek een gerecht">
-            <div ng-repeat="gerecht in gerechten">
-                {{gerecht.name}}
+                <p>
+                    <h3>Ingredienten</h3>
+                    <input type="text" ng-model="ingredientenLijst" placeholder="Voeg de ingredienten toe">
+                    <button ng-click="addIngredient(ingredientenLijst)">Add</button>
+
+                    <div>
+                        <label ng-repeat="ingredient in ingredienten" style="display:block;">
+                            <input ng-click="toggle(ingredient)" type="checkbox"/>
+                            {{ingredient.$value}}
+                        </label>
+                    </div>
+
+                    <button ng-click="addGerecht(nieuwGerecht)">Gerecht toevoegen</button>
+                </p>
+
             </div>
-            </p>
+
+            <div>
+                <h1>Alle gerechten incl ingredienten</h1>
+                <ul>
+                    <li ng-repeat="gerecht in gerechten">
+                        {{ gerecht.name }}
+                        <ul ng-repeat="ingredient in getGerechtIngredienten(gerecht)">
+                            <li>
+                                {{ingredient}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h1>Gerechtenplanner</h1>
+                <p>
+                    <h3>Gerechtnaam</h3>
+                    <input type="text" ng-model="nieuwGerecht.name" placeholder="Zoek een gerecht">
+                    <div ng-repeat="gerecht in gerechten">
+                        {{gerecht.name}}
+                    </div>
+                </p>
+            </div>
         </div>
     </body>
 </html>

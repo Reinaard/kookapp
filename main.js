@@ -1,59 +1,59 @@
 var app =  angular.module('kookApp', ['firebase']);
 
-app.controller('kookController', ['$scope','Gerecht','Ingredient', function($scope, filterFilter, Gerecht, Ingredient){
-
-	$scope.user="Guest";
+app.controller('kookController', ['$scope','Gerecht','Ingredient', function($scope, Gerecht, Ingredient){
 
 	$scope.gerechten = Gerecht.all;
-	// !! $scope.ingredienten = Ingredient.all; !!
-	$scope.ingredienten = [
-		{ name: 'kaas' },
-		{ name: 'tomaat' },
-		{ name: 'gehakt' },
-		{ name: 'kruiden' }
-	];
+	$scope.ingredienten = Ingredient.all;
 
-	$scope.addedIngredients = {};
-	$scope.addedIngredients = $scope.ingredienten;
+	$scope.selected = [];
 
-	console.log($scope.gerechten);
-	for(var ingredient in $scope.addedIngredients.name) {
-		//ingrediented.selected = false;
-		console.log($scope.gerechten);
-	}
-
-	//console.log($scope.addedIngredients);
-
-	$scope.selectedIngredients = function selectedIngredients() {
-		return filterFilter($scope.ingredienten, { selected: true });
+	$scope.toggle = function (ingredient) {
+		var idx = $scope.selected.indexOf(ingredient);
+		if (idx > -1) {
+			$scope.selected.splice(idx, 1);
+		}
+		else {
+			$scope.selected.push(ingredient);
+		}
+		console.log($scope.selected);
 	};
 
 
+	$scope.getGerechtIngredienten = function(ingredient){
+		console.log(ingredient);
+		return "kaas";
+	}
 
-	$scope.addIngredient = function (addedingredient) {
-		console.log($scope.ingredientCheckbox);
-		if($scope.ingredientCheckbox[addedingredient]) {
-			$scope.addedIngredients.push(addedingredient);
-		} else {
-			$scope.addedIngredients.splice(addedingredient);
+
+	$scope.addIngredient = function (item) {
+		var exists = false;
+		var ref = new Firebase("https://kookapp-22c31.firebaseio.com/data/ingredienten");
+		ref.once("value", function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+				var val = childSnapshot.val();
+				if(val.toLowerCase() == item.toLowerCase()) {
+					exists = true
+				}
+			});
+		});
+		if(!exists) {
+			Ingredient.create(item);
 		}
 	};
 
+	$scope.addGerecht = function(nieuwGerecht){
+		nieuwGerecht.ingredienten = [];
+		for(var i = 0; i < $scope.selected.length; i++) {
+			nieuwGerecht.ingredienten.push($scope.selected[i].$id);
+		}
+		Gerecht.create(nieuwGerecht);
 
-
-	$scope.addGerecht = function(nieuwgerecht){
-		nieuwgerecht.ingredienten = $scope.addedIngredients;
-		Gerecht.create(nieuwgerecht);
-		$scope.addedIngredients = [];
-		$scope.newdish.ingredienten = null;
-		$scope.newdish.name = null;
+		$scope.selected = [];
+		$scope.nieuwGerecht.ingredienten = [];
+		$scope.nieuwGerecht.name = null;
 	};
 
 }]);
-
-//app.controller('ingredientController', ['$scope','Ingredient', function($scope,Ingredient){
-//
-//}]);
 
 app.factory('Gerecht', ['$firebase',
 	function($firebase) {
