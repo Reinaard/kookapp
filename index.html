@@ -53,10 +53,10 @@
             <div>
                 <h1>Alle gerechten incl ingredienten</h1>
                 <ul>
-                    <li ng-repeat="gerecht in gerechten">
+                    <li ng-repeat="gerecht in gerechtenWithIngredienten(gerechten)">
                         {{ gerecht.name }}
-                        <ul ng-repeat="ingredient in getGerechtIngredienten(gerecht)">
-                            <li>
+                        <ul>
+                            <li ng-repeat="ingredient in gerecht.ingredienten">
                                 {{ingredient}}
                             </li>
                         </ul>

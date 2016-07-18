@@ -7,6 +7,22 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 
 	$scope.selected = [];
 
+	var result = [
+		{
+			"ingredienten": ["Aardappels", "Boontjes", "Kip"],
+			"name": "Roti"
+		},
+		{
+			"ingredienten": ["Gehakt", "Kruiden", "Koeken"],
+			"name": "Wraps"
+		}
+	];
+	$scope.gerechtenWithIngredienten = function(gerechten) {
+
+		console.log(gerechten);
+		return result;
+	};
+
 	$scope.toggle = function (ingredient) {
 		var idx = $scope.selected.indexOf(ingredient);
 		if (idx > -1) {
@@ -15,15 +31,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 		else {
 			$scope.selected.push(ingredient);
 		}
-		console.log($scope.selected);
 	};
-
-
-	$scope.getGerechtIngredienten = function(ingredient){
-		console.log(ingredient);
-		return "kaas";
-	}
-
 
 	$scope.addIngredient = function (item) {
 		var exists = false;
