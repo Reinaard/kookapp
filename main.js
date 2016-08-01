@@ -1,6 +1,16 @@
 var app =  angular.module('kookApp', ['firebase']);
 
+
+
 app.controller('kookController', ['$scope','Gerecht','Ingredient', function($scope, Gerecht, Ingredient){
+
+	var gerechtjestest= Gerecht.all;
+	$scope.gerechtJSON = gerechtjestest;
+	console.log(typeof $scope.gerechtJSON);
+	console.log("app controller Gerechten", gerechtjestest);
+	console.log("app controller Gerechten", gerechtjestest);
+	console.log("hello");
+
 
 	$scope.gerechten = Gerecht.all;
 	$scope.ingredienten = Ingredient.all;
@@ -66,7 +76,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 app.factory('Gerecht', ['$firebase',
 	function($firebase) {
 		var ref = new Firebase('https://kookapp-22c31.firebaseio.com/data');
-		var gerechten = $firebase(ref.child('gerechten')).$asArray();
+		var gerechten = $firebase(ref.child('gerechten')).$asObject();
 
 		var Gerecht = {
 			all: gerechten,
@@ -96,7 +106,7 @@ app.factory('Ingredient', ['$firebase',
 				return ingredienten.$add(ingredient);
 			},
 			get: function (ingredientId) {
-				return $firebase(ref.child('ingredienten').child(ingredientId)).$asObject();
+				return $firebase(ref.child('ingredienten').child(ingredientId));
 			},
 			delete: function (ingredient) {
 				return ingredienten.$remove(ingredient);
@@ -107,3 +117,4 @@ app.factory('Ingredient', ['$firebase',
 
 	}
 ]);
+
