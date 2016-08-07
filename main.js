@@ -2,44 +2,29 @@ var app =  angular.module('kookApp', ['firebase']);
 
 
 
-app.controller('kookController', ['$scope','Gerecht','Ingredient', function($scope, Gerecht, Ingredient){
-
-	var gerechtjestest= Gerecht.all;
-	$scope.gerechtJSON = gerechtjestest;
-	console.log(typeof $scope.gerechtJSON);
-	console.log("app controller Gerechten", gerechtjestest);
-	console.log("app controller Gerechten", gerechtjestest);
-	console.log("hello");
-
-
+app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', function($scope, Gerecht, Ingredient, Planner){
 	$scope.gerechten = Gerecht.all;
 	$scope.ingredienten = Ingredient.all;
+	$scope.planners = Planner.all;
+	$scope.boodschappen = [];
 
 	$scope.selected = [];
+	$scope.selectedPlanner = [];
 
-	var result = [
-		{
-			"ingredienten": ["Aardappels", "Boontjes", "Kip"],
-			"name": "Roti"
-		},
-		{
-			"ingredienten": ["Gehakt", "Kruiden", "Koeken"],
-			"name": "Wraps"
-		}
-	];
-	$scope.gerechtenWithIngredienten = function(gerechten) {
-
-		console.log(gerechten);
-		return result;
-	};
-
-	$scope.toggle = function (ingredient) {
-		var idx = $scope.selected.indexOf(ingredient);
-		if (idx > -1) {
-			$scope.selected.splice(idx, 1);
+	$scope.toggle = function (inputCheckbox, type) {
+		if (type === "gerechtPlanner") {
+			var idx = $scope.selectedPlanner.indexOf(inputCheckbox);
+			var array = $scope.selectedPlanner;
 		}
 		else {
-			$scope.selected.push(ingredient);
+			var idx = $scope.selected.indexOf(inputCheckbox);
+			var array = $scope.selected;
+		}
+		if (idx > -1) {
+			array.splice(idx, 1);
+		}
+		else {
+			array.push(inputCheckbox);
 		}
 	};
 
@@ -50,7 +35,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 			snapshot.forEach(function(childSnapshot) {
 				var val = childSnapshot.val();
 				if(val.toLowerCase() == item.toLowerCase()) {
-					exists = true
+					exists = true;
 				}
 			});
 		});
@@ -60,15 +45,50 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 	};
 
 	$scope.addGerecht = function(nieuwGerecht){
+		console.log("nieuwe gerechtnaam: ", nieuwGerecht);
 		nieuwGerecht.ingredienten = [];
 		for(var i = 0; i < $scope.selected.length; i++) {
-			nieuwGerecht.ingredienten.push($scope.selected[i].$id);
+			nieuwGerecht.ingredienten.push($scope.selected[i]);
 		}
 		Gerecht.create(nieuwGerecht);
 
 		$scope.selected = [];
+
 		$scope.nieuwGerecht.ingredienten = [];
-		$scope.nieuwGerecht.name = null;
+		$scope.nieuwGerecht.name = "";
+
+		angular.forEach($scope.ingredienten, function (item) {
+			item.selected = false;
+		});
+	};
+
+	$scope.addPlanner = function(nieuwPlanner){
+		console.log("nieuwe planner naam: ", nieuwPlanner);
+		nieuwPlanner.gerechten = [];
+		for(var i = 0; i < $scope.selectedPlanner.length; i++) {
+			nieuwPlanner.gerechten.push($scope.selectedPlanner[i]);
+		}
+		Planner.create(nieuwPlanner);
+
+		$scope.selectedPlanner = [];
+
+		$scope.nieuwPlanner.ingredienten = [];
+		$scope.nieuwPlanner.name = "";
+
+		angular.forEach($scope.gerechten, function (item) {
+			item.selected = false;
+		});
+	};
+
+	$scope.getShoppingList = function(nieuwPlanner) {
+		console.log("nieuwe planner getShoppingList",nieuwPlanner);
+		console.log("gerechten in planner getShoppingList",$scope.selectedPlanner);
+
+		var gerecht = Gerecht.get("-KMQK1qXLtLlhNYG8EjK");
+		console.log("opgehaalde gerecht",gerecht);
+		$scope.boodschappen.push(gerecht);
+		console.log("opgehaalde gerecht",$scope.boodschappen);
+		// TODO:get ingredients from all selected dishes
 	};
 
 }]);
@@ -76,15 +96,16 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient', function($sco
 app.factory('Gerecht', ['$firebase',
 	function($firebase) {
 		var ref = new Firebase('https://kookapp-22c31.firebaseio.com/data');
-		var gerechten = $firebase(ref.child('gerechten')).$asObject();
+		var gerechten = $firebase(ref.child('gerechten')).$asArray();
 
 		var Gerecht = {
 			all: gerechten,
 			create: function (nieuwgerecht) {
+				console.log(nieuwgerecht);
 				return gerechten.$add(nieuwgerecht);
 			},
 			get: function (gerechtId) {
-				return $firebase(ref.child('gerechten').child(gerechtId)).$asObject();
+				return $firebase(ref.child('gerechten').child(gerechtId)).$asArray();
 			},
 			delete: function (gerecht) {
 				return gerechten.$remove(gerecht);
@@ -118,3 +139,25 @@ app.factory('Ingredient', ['$firebase',
 	}
 ]);
 
+app.factory('Planner', ['$firebase',
+	function($firebase) {
+		var ref = new Firebase('https://kookapp-22c31.firebaseio.com/data');
+		var planners = $firebase(ref.child('planner')).$asArray();
+
+		var Planner = {
+			all: planners,
+			create: function (planner) {
+				return planners.$add(planner);
+			},
+			get: function (plannerId) {
+				return $firebase(ref.child('planner').child(plannerId));
+			},
+			delete: function (planner) {
+				return planners.$remove(planner);
+			}
+		};
+
+		return Planner;
+
+	}
+]);

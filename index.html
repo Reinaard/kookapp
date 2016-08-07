@@ -11,27 +11,17 @@
         <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
 
         <script src="main.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body ng-app="kookApp">
-        {{"AngularJS Loaded"}}
-
          <div ng-controller="kookController">
+             <div class="gerechtToevoegen" style="background-color:lightgray;">
 
-            <div style="background-color:lightgray;">
 
                 <h1>Gerecht toevoegen</h1>
                 <p>
                     <h3>Gerechtnaam</h3>
                     <input type="text" ng-model="nieuwGerecht.name" placeholder="Naam van het gerecht">
-                </p>
-                <p>
-                <h2>{{nieuwGerecht.name}}</h2>
-                    <ul>
-                        <li ng-repeat="item in selected">
-                            {{item.$value}}
-                        </li>
-                    </ul>
                 </p>
 
                 <p>
@@ -41,15 +31,28 @@
 
                     <div>
                         <label ng-repeat="ingredient in ingredienten" style="display:block;">
-                            <input ng-click="toggle(ingredient)" type="checkbox"/>
+                            <input ng-click="toggle(ingredient.$value)" type="checkbox" ng-model="ingredient.selected" />
                             {{ingredient.$value}}
                         </label>
                     </div>
 
                     <button ng-click="addGerecht(nieuwGerecht)">Gerecht toevoegen</button>
                 </p>
+             </div>
+             <div class="aside">
+                 <h1>Nieuw gerecht</h1>
+                 <h2>Naam</h2>
+                 {{nieuwGerecht.name}}
+                 <h2>Ingredienten</h2>
+                 <ul>
+                     <li ng-repeat="item in selected">
+                         {{item}}
+                     </li>
+                 </ul>
+             </div>
 
-            </div>
+
+
 
             <div>
                 <h1>Alle gerechten incl ingredienten</h1>
@@ -65,16 +68,43 @@
                 </ul>
             </div>
 
-            <div>
-                <h1>Gerechtenplanner</h1>
-                <p>
-                    <h3>Gerechtnaam</h3>
-                    <input type="text" ng-model="nieuwGerecht.name" placeholder="Zoek een gerecht">
-                    <div ng-repeat="gerecht in gerechten">
-                        {{gerecht.name}}
-                    </div>
-                </p>
-            </div>
+
+
+
+             <div class="gerechtToevoegen">
+                 <h1>Gerechtenplanner</h1>
+                 <input type="text" ng-model="nieuwPlanner.name" placeholder="Naam van de Planner" />
+                 <p>
+                     <h3>Gerechtnaam</h3>
+                     <input type="text" placeholder="Zoek een gerecht">
+
+                     <div>
+                         <label ng-repeat="gerecht in gerechten" style="display:block;">
+                             <input ng-click="toggle(gerecht.name, 'gerechtPlanner')" type="checkbox"/>
+                             {{gerecht.name}}
+                         </label>
+                     </div>
+                    <button ng-click="addPlanner(nieuwPlanner)">Gerechten aan planner toevoegen</button>
+                 </p>
+             </div>
+
+             <div class="aside">
+                 <h1>Nieuwe planner</h1>
+                 <h2>Naam</h2>
+                 {{nieuwPlanner.name}}
+                 <h2>Gerechten</h2>
+                 <ul>
+                     <li ng-repeat="item in selectedPlanner">
+                         {{item}}
+                     </li>
+                 </ul>
+                 <button ng-click="getShoppingList(nieuwPlanner.name)">Toon boodschappenlijst voor deze planner</button>
+             </div>
+
+
+
+
+
         </div>
     </body>
 </html>
