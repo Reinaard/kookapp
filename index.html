@@ -9,38 +9,42 @@
         <!-- AngularFire -->
         <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+        <!--jquery-->
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
         <script src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body ng-app="kookApp">
          <div ng-controller="kookController">
-             <div class="gerechtToevoegen" style="background-color:lightgray;">
 
-
-                <h1>Gerecht toevoegen</h1>
+             <h1>Gerecht toevoegen</h1>
+             <div class="gerechtToevoegen">
                 <p>
-                    <h3>Gerechtnaam</h3>
-                    <input type="text" ng-model="nieuwGerecht.name" placeholder="Naam van het gerecht">
+                 <h3><a href="" ng-click="showDetailst = ! showDetailst">
+                       Gerechtnaam
+                    </a></h3>
                 </p>
+                <p ng-show="showDetailst" class="test">
 
-                <p>
                     <h3>Ingredienten</h3>
                     <input type="text" ng-model="ingredientenLijst" placeholder="Voeg de ingredienten toe">
                     <button ng-click="addIngredient(ingredientenLijst)">Add</button>
-
                     <div>
                         <label ng-repeat="ingredient in ingredienten" style="display:block;">
                             <input ng-click="toggle(ingredient.$value)" type="checkbox" ng-model="ingredient.selected" />
                             {{ingredient.$value}}
                         </label>
                     </div>
-
                     <button ng-click="addGerecht(nieuwGerecht)">Gerecht toevoegen</button>
                 </p>
              </div>
+
              <div class="aside">
                  <h1>Nieuw gerecht</h1>
+                 <input type="text" ng-model="nieuwGerecht.name" placeholder="Naam van het gerecht">
                  <h2>Naam</h2>
                  {{nieuwGerecht.name}}
                  <h2>Ingredienten</h2>
@@ -58,9 +62,9 @@
                 <h1>Alle gerechten incl ingredienten</h1>
                 <ul>
                     <li ng-repeat="gerecht in gerechten">
-                        {{ gerecht.name }}
+                        <a ng-click="showDetails = ! showDetails" href="">{{ gerecht.name }}</a>
                         <ul>
-                            <li ng-repeat="ingredient in gerecht.ingredienten">
+                            <li ng-repeat="ingredient in gerecht.ingredienten" ng-show="showDetails">
                                 {{ingredient}}
                             </li>
                         </ul>

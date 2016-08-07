@@ -1,7 +1,6 @@
 var app =  angular.module('kookApp', ['firebase']);
 
 
-
 app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', function($scope, Gerecht, Ingredient, Planner){
 	$scope.gerechten = Gerecht.all;
 	$scope.ingredienten = Ingredient.all;
@@ -161,3 +160,4 @@ app.factory('Planner', ['$firebase',
 
 	}
 ]);
+
