@@ -1,13 +1,26 @@
-
-.gerechtToevoegen, .aside {
-    width:49%;
+html, body, .ng-scope {
+    font-family: Arial;
+    margin:0px;
+    padding:0px;
+}
+html {
+    margin-top: -21px;
+}
+.addDish, .aside {
+    width: 45%;
     display:inline-block;
     vertical-align: top;
-}
-.gerechtToevoegen {
     background:lightgray;
+    padding: 0px 13px;
 }
-
+.gerechtToevoegen, .plannerToevoegen {
+    background-color: rgba(128, 128, 128, 0.72);
+    margin: auto;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+}
 .aside {
     background:lightgray;
 }
@@ -17,9 +30,64 @@
 }
 
 .dishIngredientList a {
-    color: red;
+
 }
-.test {
-    color: red;
-    display: none;
+.ingredientenlijst {
+    overflow: scroll;
+    font-size:18px;
+    height: 595px;
+    overflow-x: hidden;
+}
+.ingredientenlijst label {
+    padding:3px;
+    display:block;
+}
+.ingredientenlijst label:nth-child(even) {
+    background:white;
+}
+.ingredientenlijst label:nth-child(odd) {
+    background: #ededed;
+}
+button {
+    font-size:16px;
+    font-weight:bold;
+}
+button[disabled] {
+    color:lightgray;
+}
+.ingredientResult {
+    font-size:20px;
+}
+.ingredientBlock {
+    display:inline-block;
+    border:1px solid gray;
+    padding:3px;
+    padding-right:20px;
+}
+.searchField, input {
+    padding:5px;
+    font-size:18px;
+}
+.popup {
+    background: white;
+    width: 70%;
+    margin: auto;
+    height: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: cursive;
+    padding-right: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }

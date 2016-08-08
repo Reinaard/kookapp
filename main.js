@@ -89,7 +89,16 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		console.log("opgehaalde gerecht",$scope.boodschappen);
 		// TODO:get ingredients from all selected dishes
 	};
-
+	
+	$scope.checkAddDish = function() {
+		if ($scope.selected.length > 0 && $scope.nieuwGerecht.name != "") {
+			return false;
+		}
+		else {
+			return true;
+		}
+	};
+	
 }]);
 
 app.factory('Gerecht', ['$firebase',
