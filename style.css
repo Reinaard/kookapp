@@ -67,7 +67,17 @@ button[disabled] {
 .searchField, input {
     padding:5px;
     font-size:18px;
+
 }
+.searchField {
+    width: 373px;
+}
+
+.addDish button {
+    height: 36px;
+    width: 50px;
+}
+
 .popup {
     background: white;
     width: 70%;

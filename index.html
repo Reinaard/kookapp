@@ -53,7 +53,7 @@
                                  {{item}}
                              </li>
                          </ul>
-                         <button ng-click="addGerecht(nieuwGerecht)" ng-disabled="checkAddDish()">Gerecht toevoegen</button>
+                         <button ng-click="addGerecht(nieuwGerecht)" ng-disabled="checkAddDish(nieuwGerecht.name)">Gerecht toevoegen</button>
                      </div>
                  </div>
 
@@ -74,7 +74,7 @@
 
                          <div class="ingredientenlijst">
                              <label ng-repeat="gerecht in gerechten" >
-                                 <input ng-click="toggle(gerecht.name, 'gerechtPlanner')" type="checkbox"/>
+                                 <input ng-click="toggle(gerecht, 'gerechtPlanner')" type="checkbox"/>
                                  {{gerecht.name}}
                              </label>
                          </div>
@@ -88,14 +88,18 @@
                          <h4>Gerechten</h4>
                          <ul>
                              <li ng-repeat="item in selectedPlanner">
-                                 {{item}}
+                                 {{item.name}}
                              </li>
                          </ul>
                          <button ng-click="addPlanner(nieuwPlanner)">Gerechten aan planner toevoegen</button>
-                         <button ng-click="getShoppingList(nieuwPlanner.name)">Toon boodschappenlijst voor deze planner</button>
+                         <button ng-click="getShoppingList(nieuwPlanner.name)">Toon boodschappenlijst voor deze planner{{nieuwPlanner.name}}</button>
                      </div>
                  </div>
              </div>
+
+
+
+
 
              <h1>
                  <a href="" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
@@ -119,7 +123,7 @@
                 </ul>
             </div>
 
-
+            {{gerechten}}
 
 
         </div>

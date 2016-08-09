@@ -10,20 +10,21 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	$scope.selected = [];
 	$scope.selectedPlanner = [];
 
-	$scope.toggle = function (inputCheckbox, type) {
+
+	$scope.toggle = function (checkedObject, type) {
 		if (type === "gerechtPlanner") {
-			var idx = $scope.selectedPlanner.indexOf(inputCheckbox);
+			var idx = $scope.selectedPlanner.indexOf(checkedObject);
 			var array = $scope.selectedPlanner;
 		}
 		else {
-			var idx = $scope.selected.indexOf(inputCheckbox);
+			var idx = $scope.selected.indexOf(checkedObject);
 			var array = $scope.selected;
 		}
 		if (idx > -1) {
 			array.splice(idx, 1);
 		}
 		else {
-			array.push(inputCheckbox);
+			array.push(checkedObject);
 		}
 	};
 
@@ -79,19 +80,34 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		});
 	};
 
-	$scope.getShoppingList = function(nieuwPlanner) {
-		console.log("nieuwe planner getShoppingList",nieuwPlanner);
-		console.log("gerechten in planner getShoppingList",$scope.selectedPlanner);
+	$scope.addToShoppingList = function(ingredient) {
+		var idx = $scope.boodschappen.indexOf(ingredient);
+		var array = $scope.boodschappen;
 
-		var gerecht = Gerecht.get("-KMQK1qXLtLlhNYG8EjK");
-		console.log("opgehaalde gerecht",gerecht);
-		$scope.boodschappen.push(gerecht);
-		console.log("opgehaalde gerecht",$scope.boodschappen);
-		// TODO:get ingredients from all selected dishes
+		if (idx < 0) {
+			array.push(ingredient);
+		}
+	}
+
+	$scope.getShoppingList = function(nieuwPlanner) {
+		var objectArray = $scope.selectedPlanner;
+		for(i = 0; i < objectArray.length; i++) {
+			console.log("gerecht object:",$scope.selectedPlanner[i]);
+
+			var ingredienten = $scope.selectedPlanner[i].ingredienten;
+			//$scope.boodschappen.push(ingredienten);
+			console.log("IN GERECHT", ingredienten);
+
+			for (j = 0; j < ingredienten.length; j++) {
+				$scope.addToShoppingList(ingredienten[j]);
+			}
+			console.log("IN BOODSCHAPPENLIJST", $scope.boodschappen);
+		}
 	};
 	
-	$scope.checkAddDish = function() {
-		if ($scope.selected.length > 0 && $scope.nieuwGerecht.name != "") {
+	$scope.checkAddDish = function(nieuwGerecht) {
+		// console.log(nieuwGerecht);
+		if ($scope.selected.length > 0 && nieuwGerecht != "") {
 			return false;
 		}
 		else {
@@ -164,9 +180,7 @@ app.factory('Planner', ['$firebase',
 				return planners.$remove(planner);
 			}
 		};
-
 		return Planner;
-
 	}
 ]);
 
