@@ -28,19 +28,35 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		}
 	};
 
-	$scope.filterDish = function(arr, inputNameX, ingredientenLijst) {
+	$scope.filterIngredients = function(arg) {
+
 		var inputName = $scope.ingredientenLijst;
-		if(inputName != undefined && inputName != "") {
-			if(arr.$value.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
+
+		if (inputName != undefined && inputName != "") {
+			if (arg.$value.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
 				return true;
 			} else {
 				return false;
 			}
 		} else {
-				return true;
+			return true;
 		}
 	};
 
+	$scope.filterDish = function(arg) {
+		console.log(arg);
+		var inputName = $scope.gerechtenLijst;
+
+		if (inputName != undefined && inputName != "") {
+			if (arg.name.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return true;
+		}
+	};
 
 	$scope.addIngredient = function (item) {
 		var exists = false;
@@ -61,11 +77,10 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	$scope.addGerecht = function(nieuwGerechtInput){
 		nieuwGerechtInput.ingredienten = [];
 		for(var i = 0; i < $scope.selected.length; i++) {
-			// console.log("naam: "+$scope.selected[i].$value);
-			// console.log("gewicht: "+$scope.gewichtIngr);
+			var gewicht = $scope.selected[i].gewicht;
 			var gerechtToAdd =  {
 				"dishName" : $scope.selected[i].$value,
-				"gewicht" : $scope.selected[i].gewicht
+				"gewicht" : parseInt(gewicht)
 			} ;
 			nieuwGerechtInput.ingredienten.push(gerechtToAdd);
 		}
@@ -138,7 +153,20 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 			return true;
 		}
 	};
-	
+
+	$scope.checkAddPlanner = function(nieuwPlanner) {
+		if(nieuwPlanner != undefined && nieuwPlanner.name != "") {
+			if ($scope.selectedPlanner.length > 0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		} else {
+			return true;
+		}
+	};
+
 }]);
 
 app.factory('Gerecht', ['$firebase',

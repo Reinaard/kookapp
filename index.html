@@ -20,6 +20,14 @@
     <body ng-app="kookApp">
          <div ng-controller="kookController">
 
+             <div class="boodschappenLijst">
+                 <h1>Boodschappenlijst</h1>
+                 <label ng-repeat="boodschap in boodschappen">
+                     <input ng-click="toggle(boodschap, '')" type="checkbox" ng-model="boodschap.selected" />
+                     {{boodschap.dishName}}
+                     <span class="float-right">{{boodschap.gewicht}} gram</span>
+                 </label>
+             </div>
 
              <div class="gerechtToevoegen" ng-show="showModalAddDish">
                  <div class="popup">
@@ -27,16 +35,16 @@
                      <div class="addDish">
 
                         <h3>1. Gerechtnaam invoeren</h3>
-                        <input type="text" ng-model="nieuwGerecht.name" placeholder="Nasi, Pasta, etc..." class="dishNameInputField">
+                        <input type="text" ng-model="nieuwGerecht.name" placeholder="Nasi, Pasta, etc..." class="nameInputField">
 
                         <h3>2. Ingredienten selecteren </h3>
 
                          <div class="listSearchWrapper">
-                            <input class="searchField" type="text" ng-model="ingredientenLijst" placeholder="Zoek een ingredient..."/>
+                            <input class="searchAndAddField" type="text" ng-model="ingredientenLijst" placeholder="Zoek een ingredient..."/>
                             <button ng-click="addIngredient(ingredientenLijst)">+</button>
                         </div>
                         <div class="ingredientenlijst">
-                            <label ng-repeat="ingredient in ingredienten | filter:filterDish:ingredientenLijst:ingredienten | orderBy:'ingredient.name'">
+                            <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'ingredient.$value'">
                                 <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                 {{ingredient.$value}}
                             </label>
@@ -59,7 +67,6 @@
                          <ul class="ingredientResult">
                              <li ng-repeat="item in selected">
                                  {{item.$value}}
-
                              </li>
                          </ul>
                          <input type="checkbox" ng-model="savedGerecht"/>
@@ -79,19 +86,20 @@
                  <div class="popup">
                      <span class="close" ng-click="showModalAddPlanner = !showModalAddPlanner">x</span>
                      <div class="addDish">
-                         <h1>1. Planner naam invoeren</h1>
-                         <input type="text" ng-model="nieuwPlanner.name" placeholder="Week 1, Weekend, etc..." />
+                         <h3>1. Planner naam invoeren</h3>
+                         <input type="text" ng-model="nieuwPlanner.name" placeholder="Week 1, Weekend, etc..." class="nameInputField" />
+
                          <p>
-                         <h3>2. Gerechten selecteren</h3>
-                         <input type="text" placeholder="Zoek een gerecht">
+                             <h3>2. Gerechten selecteren</h3>
+                             <input type="text" placeholder="Zoek een gerecht" class="searchAndAddField" ng-model="gerechtenLijst">
+                             <button ng-click="showModalAddDish = !showModalAddDish">+</button>
 
-                         <div class="ingredientenlijst">
-                             <label ng-repeat="gerecht in gerechten">
-                                 <input ng-click="toggle(gerecht, 'gerechtPlanner')" type="checkbox"/>
-                                 {{gerecht.name}}
-                             </label>
-                         </div>
-
+                             <div class="ingredientenlijst">
+                                 <label ng-repeat="gerecht in gerechten | filter:filterDish:gerechtenLijst:gerechten | orderBy:'gerecht.name'">
+                                     <input ng-click="toggle(gerecht, 'gerechtPlanner')" type="checkbox"/>
+                                     {{gerecht.name}}
+                                 </label>
+                             </div>
                          </p>
                      </div>
 
@@ -104,12 +112,10 @@
                                  {{item.name}}
                              </li>
                          </ol>
-                         <button ng-click="addPlanner(nieuwPlanner)">Gerechten aan planner toevoegen</button>
-                         <button ng-click="getShoppingList()">Genereer een boodschappenlijst</button>
-                         <h1>boodschappenlijst:</h1>
-                         <ul>
-                             <li ng-repeat="boodschap in boodschappen">{{boodschap.gewicht}}gram {{boodschap.dishName}}</li>
-                         </ul>
+
+                         <button ng-click="getShoppingList()" ng-disabled="checkAddPlanner(nieuwPlanner)" class="gerechtToevoegenButton popup-boodschappenlijst">Maak een boodschappenlijst</button>
+                         <button ng-click="addPlanner(nieuwPlanner)" ng-disabled="checkAddPlanner(nieuwPlanner)" class="gerechtToevoegenButton">Maak nieuwe planner</button>
+
                      </div>
                  </div>
              </div>

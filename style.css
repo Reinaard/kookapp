@@ -20,6 +20,10 @@ html {
 .aside {
     width: 68%;
     margin-left: 10px;
+    overflow-x: hidden;
+}
+.gerechtToevoegen {
+    z-index:1;
 }
 .gerechtToevoegen, .plannerToevoegen {
     background-color: rgba(26, 26, 26, 0.8);
@@ -89,11 +93,11 @@ button[disabled] {
     outline:0;
 }
 
-.searchField {
+.searchAndAddField {
     width: 289px;
 }
 
-.dishNameInputField {
+.nameInputField {
     width: 94%;
 }
 
@@ -163,7 +167,7 @@ button[disabled] {
     position: fixed;
     bottom: 0px;
     margin-bottom: -7px;
-    left: 42%;
+    right: 42%;
     color: white;
     font-size: 20px;
     cursor: pointer;
@@ -172,6 +176,7 @@ button[disabled] {
 .gerechtToevoegenButton[disabled] {
     color: rgb(145, 145, 145);
     background-color: #bdbdbd;
+    z-index:0;
 }
 .notification {
     height: 91px;
@@ -200,10 +205,51 @@ button[disabled] {
     opacity:0;
 }
 
-/*.ng-hide {*/
-    /*height: 0;*/
-    /*width: 0;*/
-    /*background-color: transparent;*/
-    /*top:-200px;*/
-    /*left: 200px;*/
-/*}*/
+.popup-boodschappenlijst {
+    top: -15px;
+    width: 236px;
+    right: -15px;
+    border-radius: 50px;
+    height: 88px;
+    padding-bottom: 0px;
+    vertical-align: bottom;
+}
+
+.boodschappenLijst {
+    width: 450px;
+    position: fixed;
+    right: 0px;
+    background: #d1d1d1;
+    padding: 20px;
+    border-radius: 19px;
+    margin-top: -29px;
+}
+.boodschappenLijst span {
+    color:gray
+}
+
+.boodschappenLijst h1 {
+    text-align: center;
+}
+
+.boodschappenLijst label {
+    display:block;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.boodschappenLijst label:nth-child(odd) {
+    background: #ededed;
+}
+
+.boodschappenLijst label:nth-child(even) {
+    background: white;
+}
+
+.float-right {
+    float: right;
+}
+
+input[type=checkbox]{
+    background: green;
+}
