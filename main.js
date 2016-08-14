@@ -1,5 +1,4 @@
-var app =  angular.module('kookApp', ['firebase']);
-
+var app =  angular.module('kookApp', ['firebase', 'ngAnimate']);
 
 app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', function($scope, Gerecht, Ingredient, Planner){
 	$scope.gerechten = Gerecht.all;
@@ -9,7 +8,8 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 
 	$scope.selected = [];
 	$scope.selectedPlanner = [];
-
+	
+	$scope.gewichtIngr = [];
 
 	$scope.toggle = function (checkedObject, type) {
 		if (type === "gerechtPlanner") {
@@ -28,6 +28,20 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		}
 	};
 
+	$scope.filterDish = function(arr, inputNameX, ingredientenLijst) {
+		var inputName = $scope.ingredientenLijst;
+		if(inputName != undefined && inputName != "") {
+			if(arr.$value.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+				return true;
+		}
+	};
+
+
 	$scope.addIngredient = function (item) {
 		var exists = false;
 		var ref = new Firebase("https://kookapp-22c31.firebaseio.com/data/ingredienten");
@@ -44,26 +58,29 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		}
 	};
 
-	$scope.addGerecht = function(nieuwGerecht){
-		console.log("nieuwe gerechtnaam: ", nieuwGerecht);
-		nieuwGerecht.ingredienten = [];
+	$scope.addGerecht = function(nieuwGerechtInput){
+		nieuwGerechtInput.ingredienten = [];
 		for(var i = 0; i < $scope.selected.length; i++) {
-			nieuwGerecht.ingredienten.push($scope.selected[i]);
+			// console.log("naam: "+$scope.selected[i].$value);
+			// console.log("gewicht: "+$scope.gewichtIngr);
+			var gerechtToAdd =  {
+				"dishName" : $scope.selected[i].$value,
+				"gewicht" : $scope.selected[i].gewicht
+			} ;
+			nieuwGerechtInput.ingredienten.push(gerechtToAdd);
 		}
-		Gerecht.create(nieuwGerecht);
+
+		Gerecht.create(nieuwGerechtInput);
 
 		$scope.selected = [];
-
-		$scope.nieuwGerecht.ingredienten = [];
-		$scope.nieuwGerecht.name = "";
-
+		nieuwGerechtInput.ingredienten = [];
+		nieuwGerechtInput.name = "";
 		angular.forEach($scope.ingredienten, function (item) {
 			item.selected = false;
 		});
 	};
 
 	$scope.addPlanner = function(nieuwPlanner){
-		console.log("nieuwe planner naam: ", nieuwPlanner);
 		nieuwPlanner.gerechten = [];
 		for(var i = 0; i < $scope.selectedPlanner.length; i++) {
 			nieuwPlanner.gerechten.push($scope.selectedPlanner[i]);
@@ -81,36 +98,43 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	};
 
 	$scope.addToShoppingList = function(ingredient) {
-		var idx = $scope.boodschappen.indexOf(ingredient);
-		var array = $scope.boodschappen;
+		var boodschappenLijst = $scope.boodschappen;
 
-		if (idx < 0) {
-			array.push(ingredient);
+		var alreadyAdded = false;
+		for(var i = 0; i < boodschappenLijst.length; i++) {
+			if(ingredient.dishName == boodschappenLijst[i].dishName) {
+				alreadyAdded = true;
+				boodschappenLijst[i].gewicht += ingredient.gewicht;
+			}
+		}
+		if(!alreadyAdded) {
+			var ingredientToAdd =  {
+				"dishName" : ingredient.dishName,
+				"gewicht" : ingredient.gewicht
+			} ;
+			boodschappenLijst.push(ingredientToAdd);
 		}
 	}
 
-	$scope.getShoppingList = function(nieuwPlanner) {
+	$scope.getShoppingList = function() {
 		var objectArray = $scope.selectedPlanner;
-		for(i = 0; i < objectArray.length; i++) {
-			console.log("gerecht object:",$scope.selectedPlanner[i]);
-
-			var ingredienten = $scope.selectedPlanner[i].ingredienten;
-			//$scope.boodschappen.push(ingredienten);
-			console.log("IN GERECHT", ingredienten);
-
-			for (j = 0; j < ingredienten.length; j++) {
+		for(var i = 0; i < objectArray.length; i++) {
+			var ingredienten = objectArray[i].ingredienten;
+			for (var j = 0; j < ingredienten.length; j++) {
 				$scope.addToShoppingList(ingredienten[j]);
 			}
-			console.log("IN BOODSCHAPPENLIJST", $scope.boodschappen);
 		}
 	};
 	
-	$scope.checkAddDish = function(nieuwGerecht) {
-		// console.log(nieuwGerecht);
-		if ($scope.selected.length > 0 && nieuwGerecht != "") {
-			return false;
-		}
-		else {
+	$scope.checkAddDish = function(nieuwGerechtInput) {
+		if(nieuwGerechtInput != undefined && nieuwGerechtInput.name != "") {
+			if ($scope.selected.length > 0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		} else {
 			return true;
 		}
 	};
@@ -125,7 +149,6 @@ app.factory('Gerecht', ['$firebase',
 		var Gerecht = {
 			all: gerechten,
 			create: function (nieuwgerecht) {
-				console.log(nieuwgerecht);
 				return gerechten.$add(nieuwgerecht);
 			},
 			get: function (gerechtId) {

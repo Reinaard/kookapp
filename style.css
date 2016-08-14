@@ -7,14 +7,22 @@ html {
     margin-top: -21px;
 }
 .addDish, .aside {
-    width: 45%;
+    height: 520px;
     display:inline-block;
     vertical-align: top;
     background:lightgray;
-    padding: 0px 13px;
+    padding: 13px 13px;
+    border-radius: 7px;
+}
+.addDish {
+    width: 27%;
+}
+.aside {
+    width: 68%;
+    margin-left: 10px;
 }
 .gerechtToevoegen, .plannerToevoegen {
-    background-color: rgba(128, 128, 128, 0.72);
+    background-color: rgba(26, 26, 26, 0.8);
     margin: auto;
     position: fixed;
     width: 100%;
@@ -33,13 +41,13 @@ html {
 
 }
 .ingredientenlijst {
-    overflow: scroll;
     font-size:18px;
-    height: 595px;
+    height: 318px;
     overflow-x: hidden;
+    background-color: rgba(255,255,255,0.5);
 }
 .ingredientenlijst label {
-    padding:3px;
+    padding: 6px;
     display:block;
 }
 .ingredientenlijst label:nth-child(even) {
@@ -65,39 +73,137 @@ button[disabled] {
     padding-right:20px;
 }
 .searchField, input {
-    padding:5px;
-    font-size:18px;
-
+    padding: 8px;
+    padding-left:12px;
+    font-size: 18px;
+    border-radius: 7px;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    box-shadow: inset 1px 2px 2px rgba(0,0,0,0.2);
+    border: none;
+    margin-bottom: 5px;
+    vertical-align: top;
+    box-shadow: inset 1px 2px 2px rgba(0,0,0,0.2);
 }
+
+.searchField, input:focus {
+    outline:0;
+}
+
 .searchField {
-    width: 373px;
+    width: 289px;
+}
+
+.dishNameInputField {
+    width: 94%;
 }
 
 .addDish button {
-    height: 36px;
-    width: 50px;
+    height: 42px;
+    width: 41px;
+    font-size: 50px;
+    line-height: 36px;
+    border: none;
+    background: none;
+    color: green;
+    font-family: sans-serif;
+    margin-left: -7px;
+    margin: -4px 0px 0px 5px;
+    cursor: pointer;
+}
+.addDish button:hover,
+.addDish button:focus {
+    color: #00a000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom:2px;
 }
 
 .popup {
     background: white;
     width: 70%;
     margin: auto;
-    height: 80%;
+    box-shadow: 10px 7px 41px rgba(0,0,0, 0.2);
+    border-radius: 7px;
+    padding: 15px;
 }
 
 /* The Close Button */
 .close {
-    color: #aaaaaa;
+    color: #470500;
     float: right;
-    font-size: 28px;
+    font-size: 34px;
     font-weight: bold;
     font-family: cursive;
-    padding-right: 15px;
+    position: fixed;
+    right: 14%;
+    background-color: rgba(255,255,255,0.8);
+    padding: 16px 11px 25px 10px;
+    line-height: 0px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 9px rgba(0,0,0, 0.5);
+    margin-top: -31px;
+    margin-right: -8px;
 }
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: #ff0000;
     text-decoration: none;
     cursor: pointer;
 }
+.listSearchWrapper {
+    border:1px;
+}
+.gerechtToevoegenButton {
+    height: 56px;
+    border: none;
+    width: 16%;
+    border-radius: 8px;
+    background-color: rgb(118, 200, 118);
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: -7px;
+    left: 42%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.gerechtToevoegenButton[disabled] {
+    color: rgb(145, 145, 145);
+    background-color: #bdbdbd;
+}
+.notification {
+    height: 91px;
+    width: 10%;
+    position: relative;
+    bottom: 0px;
+    left: 45%;
+    padding-top: 16px;
+    margin-bottom: -35px;
+    margin-left: -8px;
+
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 8px #74c574 solid;
+    border-radius: 16px;
+
+    color: #76c876;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1;
+    box-shadow: 10px 10px 36px rgba(0,0,0, 0.2);
+    transition: all linear 1.5s;
+}
+
+.notification.ng-hide {
+    opacity:0;
+}
+
+/*.ng-hide {*/
+    /*height: 0;*/
+    /*width: 0;*/
+    /*background-color: transparent;*/
+    /*top:-200px;*/
+    /*left: 200px;*/
+/*}*/

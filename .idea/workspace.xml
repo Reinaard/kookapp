@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98915fec-7f06-4cc7-8742-ea5a25b5964f" name="Default" comment="" />
+    <list default="true" id="98915fec-7f06-4cc7-8742-ea5a25b5964f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style.css" afterPath="$PROJECT_DIR$/style.css" />
+    </list>
     <ignored path="kookapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +29,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+            <state relative-caret-position="415">
+              <caret line="55" column="78" selection-start-line="55" selection-start-column="78" selection-end-line="55" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -34,8 +39,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+            <state relative-caret-position="350">
+              <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -44,8 +49,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+            <state relative-caret-position="224">
+              <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -71,8 +76,8 @@
         <option value="$PROJECT_DIR$/main_oud.js" />
         <option value="$USER_HOME$/Desktop/angular firebase basic/main.js" />
         <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
   </component>
@@ -113,6 +118,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -131,19 +137,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kookapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kookapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/cmd/git.exe" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
@@ -243,23 +262,28 @@
       <workItem from="1470690278147" duration="3640000" />
       <workItem from="1470756313615" duration="1404000" />
       <workItem from="1470778154791" duration="3163000" />
+      <workItem from="1470865352596" duration="3554000" />
+      <workItem from="1470934471641" duration="12864000" />
+      <workItem from="1470954006593" duration="23953000" />
+      <workItem from="1471133758344" duration="798000" />
+      <workItem from="1471187905122" duration="2432000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67159000" />
+    <option name="totallyTimeSpent" value="110760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07323498" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12328767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23975904" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.057359308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -285,19 +309,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
@@ -667,26 +683,83 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/angular firebase basic/main.js" />
+    <entry file="file://$PROJECT_DIR$/bower_components/angular-animate/angular-animate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1471133783844" expanded="true" signature="12589:13081" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="12860:13067" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="12921:13051" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="13184:13228" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13290:13319" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13381:13410" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13424:13514" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13559:13609" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13632:13678" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13708:13751" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="13898:13986" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="117386:117538" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="117484:117524" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="117675:118040" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="117727:118039" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="117791:117835" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="117961:118027" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118104:118228" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118250:118434" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118490:118531" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118561:118586" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118623:118645" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118675:118697" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="118734:118758" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="141478:141532" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="141657:142009" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="141701:142008" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="141738:141838" ph="{&quot;templateUrl&quot;: 'home.html'...}" />
+            <marker date="1471133783844" expanded="true" signature="141887:141996" ph="{&quot;templateUrl&quot;: 'profile.html'...}" />
+            <marker date="1471133783844" expanded="true" signature="142024:142595" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="142060:142594" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="142093:142583" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="142635:142677" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="142647:142676" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="142720:142974" ph="[...]" />
+            <marker date="1471133783844" expanded="true" signature="142786:142973" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143026:143285" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="143124:143284" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="143396:143437" ph="..." />
+            <marker date="1471133783844" expanded="true" signature="143498:143554" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143570:143651" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143674:143710" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143752:143865" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143928:143973" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="143995:144040" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="144094:144137" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="144175:144221" ph="{...}" />
+            <marker date="1471133783844" expanded="true" signature="144250:144283" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+        <state relative-caret-position="224">
+          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        <state relative-caret-position="415">
+          <caret line="55" column="78" selection-start-line="55" selection-start-column="78" selection-end-line="55" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="133" column="40" selection-start-line="133" selection-start-column="40" selection-end-line="133" selection-end-column="40" />
+        <state relative-caret-position="350">
+          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
           <folding />
         </state>
       </provider>
