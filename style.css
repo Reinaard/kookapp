@@ -15,12 +15,12 @@ html {
     border-radius: 7px;
 }
 .addDish {
-    width: 27%;
+    width: 96%;
 }
 .aside {
-    width: 68%;
-    margin-left: 10px;
+    width: 96%;
     overflow-x: hidden;
+    margin-top: 11px;
 }
 .gerechtToevoegen {
     z-index:1;
@@ -252,4 +252,26 @@ button[disabled] {
 
 input[type=checkbox]{
     background: green;
+}
+
+.mainMenu h1 {
+    color: #593a00;
+    text-decoration: none;
+    background-color: #de800b;
+    padding: 12px;
+    margin: 0px;
+}
+.mainMenu a {
+    text-decoration: none;
+}
+.mainMenu > ul >li {
+    color: #593a00;
+    text-decoration: none;
+    background-color: orange;
+    padding: 12px;
+}
+.mainMenu > ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
 }

@@ -131,10 +131,16 @@
                  <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner">Planner Toevoegen</a>
              </h1>
 
+             <div>
+                 <input type="text" ng-modal="generalSeach" placeholder="Zoeken..."/>
+             </div>
 
-            <div>
-                <h1>Alle gerechten incl ingredienten</h1>
-                <ul>
+            <div class="mainMenu">
+                <a href="" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
+                <a ng-click="hideDishes = ! hideDishes" href="">
+                    <h1>Gerechten</h1>
+                </a>
+                <ul ng-show="hideDishes">
                     <li ng-repeat="gerecht in gerechten">
                         <a ng-click="showDetails = ! showDetails" href="">{{ gerecht.name }}</a>
                         <ul>
@@ -145,9 +151,22 @@
                     </li>
                 </ul>
             </div>
-
-            {{gerechten}}
-
+             <div class="mainMenu">
+                 <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner">Planner Toevoegen</a>
+                 <a ng-click="hidePlanners = ! hidePlanners" href="">
+                     <h1>Planners</h1>
+                 </a>
+                 <ul ng-show="hidePlanners">
+                     <li ng-repeat="planner in planners">
+                         <a ng-click="showPlannerDetails = ! showPlannerDetails" href="">{{ planner.name }}</a>
+                         <ul>
+                             <li ng-repeat="gerecht in planner.gerechten" ng-show="showPlannerDetails">
+                                 {{gerecht.name}}
+                             </li>
+                         </ul>
+                     </li>
+                 </ul>
+             </div>
 
         </div>
     </body>
