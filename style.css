@@ -45,20 +45,21 @@ html {
 
 }
 .ingredientenlijst {
-    font-size:18px;
+    font-size: 18px;
     height: 318px;
     overflow-x: hidden;
     background-color: rgba(255,255,255,0.5);
 }
 .ingredientenlijst label {
     padding: 6px;
-    display:block;
+    display: block;
 }
 .ingredientenlijst label:nth-child(even) {
-    background:white;
+    background: rgba(237, 237, 237, 0.15);
+
 }
 .ingredientenlijst label:nth-child(odd) {
-    background: #ededed;
+    background: rgba(255, 255, 255, 0.42);
 }
 button {
     font-size:16px;
@@ -266,7 +267,7 @@ input[type=checkbox]{
 }
 .mainMenu > ul >li {
     color: #593a00;
-    text-decoration: none;
+    text-decoration: none;§
     background-color: orange;
     padding: 12px;
 }
@@ -274,4 +275,38 @@ input[type=checkbox]{
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+}
+
+.ingredientCategory {
+    background-repeat: no-repeat;
+    background-position: right 10px top 6px;
+    font-size: 22px;
+}
+.ingredientCategory h3 {
+    padding: 16px;
+    margin: 0px;
+}
+.categoryVeg{
+    background-color:#429867;
+    background-image:url('img/ingrCategories/vegetable.png');
+}
+.categoryFish {
+    background-color:#fab243;
+    background-image:url('img/ingrCategories/fish.png');
+}
+.categoryDairy {
+    background-color:#2b5166;
+    background-image:url('img/ingrCategories/dairy.png');
+}
+.categoryMeat {
+    background-color:#e02130;
+    background-image:url('img/ingrCategories/meat.png');
+}
+.categoryFruit {
+    background-color:#482344;
+    background-image:url('img/ingrCategories/fruit.png');
+}
+.categoryOther {
+    background-color:#b6b6b6;
+    background-image:url('img/ingrCategories/other.png');
 }

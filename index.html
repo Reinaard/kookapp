@@ -44,10 +44,55 @@
                             <button ng-click="addIngredient(ingredientenLijst)">+</button>
                         </div>
                         <div class="ingredientenlijst">
-                            <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'ingredient.$value'">
-                                <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
-                                {{ingredient.$value}}
-                            </label>
+                            <select ng-model="ingredientCatFilter">
+                                <option>dairy</option>
+                                <option>meat</option>
+                            </select>
+                            {{ingredientCatFilter}}
+                            <div class="ingredientCategory categoryFish">
+                                <h3>Vis</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'fish'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
+                            <div class="ingredientCategory categoryMeat">
+                                <h3>Vlees</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'meat'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
+
+                            <div class="ingredientCategory categoryVeg">
+                                <h3>Groente</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'vegetable'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
+                            <div class="ingredientCategory categoryFruit">
+                                <h3>Fruit</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'fruit'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
+
+                            <div class="ingredientCategory categoryDairy">
+                                <h3>Zuivel</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'dairy'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
+                            <div class="ingredientCategory categoryOther">
+                                <h3>Overig</h3>
+                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'other'" >
+                                    <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
+                                    {{ingredient.name}}
+                                </label>
+                            </div>
                         </div>
                      </div>
                      <div class="aside">
@@ -56,11 +101,11 @@
                          <h1>{{nieuwGerecht.name}}</h1>
                          <h4>Ingredienten</h4>
                          <div>
-                             <span class="ingredientBlock" ng-repeat="ingredient in selected">{{ingredient.$value}}</span>
+                             <span class="ingredientBlock" ng-repeat="ingredient in selected">{{ingredient.name}}</span>
                          </div>
                          <table>
                              <tr ng-repeat="item in selected">
-                                 <td>{{item.$value}}</td>
+                                 <td>{{item.name}}</td>
                                  <td><input type="text" ng-model="item.gewicht" placeholder="100, 250, etc..." /> gram</td>
                              </tr>
                          </table>

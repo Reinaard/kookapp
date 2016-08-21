@@ -33,7 +33,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		var inputName = $scope.ingredientenLijst;
 
 		if (inputName != undefined && inputName != "") {
-			if (arg.$value.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
+			if (arg.name.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
 				return true;
 			} else {
 				return false;
@@ -44,11 +44,15 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	};
 
 	$scope.filterDish = function(arg) {
-		console.log(arg);
+		// console.log("input filterDish ",arg);
+		// console.log("input filterDish name ",arg.name);
+
 		var inputName = $scope.gerechtenLijst;
+		var item = arg.name;
+		// console.log("input naam ",inputName);
 
 		if (inputName != undefined && inputName != "") {
-			if (arg.name.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
+			if (item.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
 				return true;
 			} else {
 				return false;
@@ -186,7 +190,6 @@ app.factory('Gerecht', ['$firebase',
 				return gerechten.$remove(gerecht);
 			}
 		};
-
 		return Gerecht;
 	}
 ]);
@@ -208,7 +211,7 @@ app.factory('Ingredient', ['$firebase',
 				return ingredienten.$remove(ingredient);
 			}
 		};
-
+		// console.log("Ingredienten uit Firebase", ingredienten);
 		return Ingredient;
 
 	}
