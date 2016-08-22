@@ -49,46 +49,45 @@
                                 <option>meat</option>
                             </select>
                             {{ingredientCatFilter}}
+
                             <div class="ingredientCategory categoryFish">
-                                <h3>Vis</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'fish'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'fish' }).length">Vis</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'fish'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
                             </div>
                             <div class="ingredientCategory categoryMeat">
-                                <h3>Vlees</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'meat'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'meat' }).length">Vlees</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'meat'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
                             </div>
-
                             <div class="ingredientCategory categoryVeg">
-                                <h3>Groente</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'vegetable'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'vegetable' }).length">Groente</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'vegetable'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
                             </div>
                             <div class="ingredientCategory categoryFruit">
-                                <h3>Fruit</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'fruit'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'fruit' }).length">Fruit</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'fruit'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
                             </div>
-
                             <div class="ingredientCategory categoryDairy">
-                                <h3>Zuivel</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'dairy'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'dairy' }).length">Zuivel</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'dairy'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
                             </div>
                             <div class="ingredientCategory categoryOther">
-                                <h3>Overig</h3>
-                                <label ng-repeat="ingredient in ingredienten | filter:filterIngredients | orderBy:'name'" ng-if="ingredient.category == 'other'" >
+                                <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'other' }).length">Overig</h3>
+                                <label ng-repeat="ingredient in ingredienten | orderBy:'name' | filter:filterIngredients | filter: { category: 'other'}">
                                     <input ng-click="toggle(ingredient, '')" type="checkbox" ng-model="ingredient.selected" />
                                     {{ingredient.name}}
                                 </label>
