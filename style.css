@@ -25,7 +25,7 @@ html {
 .gerechtToevoegen {
     z-index:1;
 }
-.gerechtToevoegen, .plannerToevoegen {
+.gerechtToevoegen, .plannerToevoegen, .gerecht {
     background-color: rgba(26, 26, 26, 0.8);
     margin: auto;
     position: fixed;
@@ -217,13 +217,12 @@ button[disabled] {
 }
 
 .boodschappenLijst {
-    width: 450px;
+    width: 200px;
     position: fixed;
     right: 0px;
     background: #d1d1d1;
-    padding: 20px;
-    border-radius: 19px;
-    margin-top: -29px;
+    padding: 3px;
+    border-radius: 5px;
 }
 .boodschappenLijst span {
     color:gray
@@ -231,6 +230,7 @@ button[disabled] {
 
 .boodschappenLijst h1 {
     text-align: center;
+    font-size: 16px;
 }
 
 .boodschappenLijst label {
@@ -255,11 +255,18 @@ input[type=checkbox]{
     background: green;
 }
 
+.mainMenu {
+    padding: 0px 14px 14px 14px;
+}
+.gerechtMenu {
+    background-color:#e3bf8f;
+}
+.plannerMenu {
+    background-color:rgba(255,255,255,0);
+}
 .mainMenu h1 {
-    color: #593a00;
     text-decoration: none;
-    background-color: #de800b;
-    padding: 12px;
+    padding: 12px 0px;
     margin: 0px;
 }
 .mainMenu a {
@@ -267,9 +274,9 @@ input[type=checkbox]{
 }
 .mainMenu > ul >li {
     color: #593a00;
-    text-decoration: none;§
+    text-decoration: none;
     background-color: orange;
-    padding: 12px;
+    padding: 5px;
 }
 .mainMenu > ul {
     list-style-type: none;
@@ -309,4 +316,47 @@ input[type=checkbox]{
 .categoryOther {
     background-color:#b6b6b6;
     background-image:url('img/ingrCategories/other.png');
+}
+
+.dishUL > li {
+    height: 50px;
+    cursor: pointer;
+}
+
+.dishUL > li:nth-child(even){
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.dishUL > li:nth-child(odd){
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.dishUL ul {
+    padding:0px;
+}
+
+.dishUL ul li {
+    display:inline-block;
+}
+
+.dishUL .ingredientCount {
+    padding: 17px;
+    float:right;
+}
+
+.dishItemName {
+    font-size: 22px;
+    padding: 12px;
+}
+
+.dishImage {
+    float:right;
+    background-image:url('img/dishPhotos/dummy.jpg');
+    height: 300px;
+    width: 300px;
+    border-radius: 50px;
+}
+.addToList {
+    float: right;
+    padding: 24px 0px;
 }

@@ -122,6 +122,36 @@
 
              </div>
 
+             <div class="gerecht" ng-show="showModalDish">
+                 <div class="popup">
+                     <span class="close" ng-click="showModalDish = !showModalDish">x</span>
+                     <div class="aside">
+
+                         <div class="dishImage"></div>
+                         <h1>{{selectedDish.name}}</h1>
+                         <h4>Ingredienten</h4>
+                         <div>
+                             <span class="ingredientBlock" ng-repeat="ingredient in selectedDish.ingredienten">{{ingredient.dishName}}</span>
+                         </div>
+                         <table>
+                             <tr ng-repeat="item in selectedDish.ingredienten">
+                                 <td>{{item.dishName}}</td>
+                                 <td><input type="text" ng-model="item.gewicht" placeholder="100, 250, etc..." /> gram</td>
+                             </tr>
+                         </table>
+                         <ul class="ingredientResult">
+                             <li ng-repeat="item in selectedDish.ingredienten">
+                                 {{item.dishName}}
+                             </li>
+                         </ul>
+                         <input type="checkbox" ng-model="savedGerecht"/>
+                         <button ng-click="saveGerecht(selectedDish)" ng-disabled="checkEditDish(selectedDish)" class="gerechtToevoegenButton">Wijzigingen Opslaan</button>
+                         <div class="notification" ng-show="savedGerecht" class="notification-show-hide">note</div>
+                     </div>
+                 </div>
+             </div>
+
+
 
 
 
@@ -179,23 +209,27 @@
                  <input type="text" ng-modal="generalSeach" placeholder="Zoeken..."/>
              </div>
 
-            <div class="mainMenu">
-                <a href="" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
-                <a ng-click="hideDishes = ! hideDishes" href="">
+
+
+
+
+            <div class="mainMenu gerechtMenu">
+                <a href="" class="addToList" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
+                <a href ng-click="hideDishes = !hideDishes">
                     <h1>Gerechten</h1>
                 </a>
-                <ul ng-show="hideDishes">
+                <ul class="dishUL" ng-hide="hideDishes">
                     <li ng-repeat="gerecht in gerechten">
-                        <a ng-click="showDetails = ! showDetails" href="">{{ gerecht.name }}</a>
-                        <ul>
-                            <li ng-repeat="ingredient in gerecht.ingredienten" ng-show="showDetails">
-                                {{ingredient.gewicht}}  gram - {{ingredient.dishName}}
-                            </li>
-                        </ul>
+                        <a ng-click="popUP(gerecht)">
+                            <ul>
+                                <li class="dishItemName">{{ gerecht.name }}</li>
+                                <li class="ingredientCount">{{ gerecht.ingredienten.length }} ingredienten</li>
+                            </ul>
+                        </a>
                     </li>
                 </ul>
             </div>
-             <div class="mainMenu">
+             <div class="mainMenu plannerMenu">
                  <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner">Planner Toevoegen</a>
                  <a ng-click="hidePlanners = ! hidePlanners" href="">
                      <h1>Planners</h1>
@@ -211,6 +245,8 @@
                      </li>
                  </ul>
              </div>
+
+
 
         </div>
     </body>

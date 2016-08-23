@@ -10,6 +10,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	$scope.selectedPlanner = [];
 	
 	$scope.gewichtIngr = [];
+	$scope.selectedDish = null;
 
 	$scope.toggle = function (checkedObject, type) {
 		if (type === "gerechtPlanner") {
@@ -170,6 +171,13 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 			return true;
 		}
 	};
+
+
+	$scope.popUP = function(gerecht) {
+		$scope.selectedDish = gerecht;
+
+		$scope.showModalDish = !$scope.showModalDish;
+	}
 
 }]);
 
