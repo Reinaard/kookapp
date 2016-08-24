@@ -16,6 +16,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body ng-app="kookApp">
          <div ng-controller="kookController">
@@ -133,18 +134,16 @@
                          <div>
                              <span class="ingredientBlock" ng-repeat="ingredient in selectedDish.ingredienten">{{ingredient.dishName}}</span>
                          </div>
-                         <table>
+                         <table class="ingredientsTable">
                              <tr ng-repeat="item in selectedDish.ingredienten">
                                  <td>{{item.dishName}}</td>
-                                 <td><input type="text" ng-model="item.gewicht" placeholder="100, 250, etc..." /> gram</td>
+                                 <td>
+                                     <input type="text" ng-model="item.gewicht" placeholder="100, 250, etc..." />
+                                     <span class="unit">gram</span>
+                                 </td>
                              </tr>
                          </table>
-                         <ul class="ingredientResult">
-                             <li ng-repeat="item in selectedDish.ingredienten">
-                                 {{item.dishName}}
-                             </li>
-                         </ul>
-                         <input type="checkbox" ng-model="savedGerecht"/>
+                         <input type="checkbox" ng-model="savedGerecht" ng-hide="true"/>
                          <button ng-click="saveGerecht(selectedDish)" ng-disabled="checkEditDish(selectedDish)" class="gerechtToevoegenButton">Wijzigingen Opslaan</button>
                          <div class="notification" ng-show="savedGerecht" class="notification-show-hide">note</div>
                      </div>
