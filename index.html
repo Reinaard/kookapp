@@ -4,7 +4,7 @@
         <title>Kook-app</title>
         <!--Angular -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.2/angular.min.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower-angular-animate-master\angular-animate.js"></script>
         <!-- Firebase -->
         <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
         <!-- AngularFire -->
@@ -20,14 +20,21 @@
     </head>
     <body ng-app="kookApp">
          <div ng-controller="kookController">
-
-             <div class="boodschappenLijst">
-                 <h1>Boodschappenlijst</h1>
-                 <label ng-repeat="boodschap in boodschappen">
-                     <input ng-click="toggle(boodschap, '')" type="checkbox" ng-model="boodschap.selected" />
-                     {{boodschap.dishName}}
-                     <span class="float-right">{{boodschap.gewicht}} gram</span>
-                 </label>
+             <span class="groceryBtn-container">
+                 <a ng-click="shoppingListExpand = !shoppingListExpand">
+                     <h1>{{boodschappen.length}}</h1>
+                 </a>
+            </span>
+             <div class="boodschappenLijst" ng-show="shoppingListExpand">
+                 <h1>Boodschappen</h1>
+                 <div class="shoppingList" >
+                     <label ng-repeat="boodschap in boodschappen">
+                         <input ng-click="toggle(boodschap, '')" type="checkbox" ng-model="boodschap.selected" />
+                         {{boodschap.dishName}}
+                         <span class="float-right">{{boodschap.gewicht}} gram</span>
+                     </label>
+                 </div>
+                 <p ng-if="boodschappen.length < 1" class="infotext">Uw boodschappenlijst is leeg, voeg gerechten of planners toe</p>
              </div>
 
              <div class="gerechtToevoegen" ng-show="showModalAddDish">
