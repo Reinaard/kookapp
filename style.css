@@ -99,7 +99,7 @@ button[disabled] {
 }
 
 .searchAndAddField {
-    width: 289px;
+    width: 289px; !important;
 }
 
 .nameInputField {
