@@ -1,11 +1,27 @@
-html, body, .ng-scope {
-    font-family: Arial;
+html, body, .ng-scope, a {
+    font-family: 'Roboto', sans-serif;
     margin:0px;
     padding:0px;
+    color: #3F484A;
 }
-html {
-    margin-top: -21px;
+
+h1 {
+    padding: 12px 12px;
+    margin: 0;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #c1b9b9;
 }
+
+/* Header */
+.header {
+    min-height: 90px;
+}
+
+.header h1 {
+    color: #E21969;
+    padding-top: 25px;
+}
+
 .addDish, .aside {
     height: 520px;
     display:inline-block;
@@ -142,7 +158,6 @@ button[disabled] {
     float: right;
     font-size: 34px;
     font-weight: bold;
-    font-family: cursive;
     position: fixed;
     right: 14%;
     background-color: rgba(255,255,255,0.8);
@@ -210,6 +225,7 @@ button[disabled] {
     opacity:0;
 }
 
+/* BoodschappenLijst */
 .popup-boodschappenlijst {
     top: -15px;
     width: 236px;
@@ -224,10 +240,16 @@ button[disabled] {
     position: fixed;
     right: 0px;
     top: 0px;
-    background-color: rgb(53, 193, 116);
+    background-color: #00A2E1;
     width: 100%;
-    height: 70%;
+    height: 100%;
+    overflow: scroll;
 }
+
+.boodschappenLijst h1 {
+    padding-top: 25px;
+} 
+
 .boodschappenLijst span {
     color:#393939;
 }
@@ -238,16 +260,13 @@ button[disabled] {
     font-size: 18px;
 
 }
-.boodschappenLijst h1 {
-    padding: 0px 16px;
-}
 
 .boodschappenLijst label:nth-child(odd) {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.72);
 }
 
 .boodschappenLijst label:nth-child(even) {
-    background: rgba(255, 255, 255, 0.47);
+    background: rgba(255, 255, 255, 0.43);
 }
 
 .float-right {
@@ -258,23 +277,70 @@ input[type=checkbox]{
     background: green;
 }
 
-.mainMenu {
-    padding: 0px 14px 14px 14px;
-}
+/* gerechtMenu */
 .gerechtMenu {
-    background-color:#e3bf8f;
+    background-color: #0CBAC2;
 }
+
+.dishUL ul {
+    padding:0px;
+}
+
+.dishUL ul li {
+    display:inline-block;
+}
+
+.dishUL > li {
+    height: 50px;
+    cursor: pointer;
+}
+
+.dishUL > li:nth-child(odd){
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.dishUL > li:nth-child(even){
+    background: rgba(255, 255, 255, 0.43);
+}
+
+/* plannerMenu */
 .plannerMenu {
-    background-color:rgba(255,255,255,0);
+    background-color: #FFCC34;
 }
+
+.plannerMenu > ul {
+    padding-top: 0;
+}
+
+.plannerMenu > ul > li:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.plannerMenu > ul > li:nth-child(even) {
+    background: rgba(255, 255, 255, 0.43);
+}
+
+/* Main menu */
 .mainMenu h1 {
     text-decoration: none;
-    padding: 12px 0px;
-    margin: 0px;
 }
+
 .mainMenu a {
     text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
 }
+
+.mainMenu .title {
+    width: 92%;
+}
+
+.mainMenu .add {
+    font-size: 2rem;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #b7abab;
+}
+
 .mainMenu > ul >li {
     color: #593a00;
     text-decoration: none;
@@ -283,7 +349,7 @@ input[type=checkbox]{
 }
 .mainMenu > ul {
     list-style-type: none;
-    padding: 0px;
+    padding: 12px;
     margin: 0px;
 }
 
@@ -321,27 +387,6 @@ input[type=checkbox]{
     background-image:url('img/ingrCategories/other.png');
 }
 
-.dishUL > li {
-    height: 50px;
-    cursor: pointer;
-}
-
-.dishUL > li:nth-child(even){
-    background: rgba(255, 255, 255, 0.38);
-}
-
-.dishUL > li:nth-child(odd){
-    background: rgba(255, 255, 255, 0.16);
-}
-
-.dishUL ul {
-    padding:0px;
-}
-
-.dishUL ul li {
-    display:inline-block;
-}
-
 .dishUL .ingredientCount {
     padding: 17px;
     float:right;
@@ -358,10 +403,6 @@ input[type=checkbox]{
     height: 300px;
     width: 300px;
     border-radius: 50px;
-}
-.addToList {
-    float: right;
-    padding: 24px 0px;
 }
 
 .aside h1 {
@@ -436,26 +477,21 @@ input[type=checkbox]{
 }
 
 .shoppingList {
-    width: 98%;
-    position: fixed;
-    right: 0px;
-    padding: 73px 1% 1% 1%;
-    top: 0px;
-    height: 359px;
-    overflow: scroll;
+    padding: 12px;
 }
 
 .groceryBtn-container {
     background-image: url('img/menuIcons/groceries.png');
-    width: 69px;
+    width: 43px;
     height: 69px;
     background-repeat: no-repeat;
     background-position: right;
     position: fixed;
-    right: 2px;
-    top: 2px;
+    right: 7px;
+    top: 7px;
     cursor: pointer;
     z-index: 1;
+    text-align: center;
 }
 .groceryBtn-container h1 {
     text-align: center;
