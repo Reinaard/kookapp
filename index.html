@@ -21,11 +21,29 @@
     </head>
     <body ng-app="kookApp">
          <div ng-controller="kookController">
-             <span class="groceryBtn-container">
-                 <a ng-click="shoppingListExpand = !shoppingListExpand">
-                     <h1>{{getGroceryTotal()}}</h1>
-                 </a>
-            </span>
+             <div>
+                 <span class="groceryBtn-container">
+                     <a ng-click="shoppingListExpand = !shoppingListExpand">
+                         <h1>{{getGroceryTotal()}}</h1>
+                     </a>
+                 </span>
+                 <span class="filterListBtn-container">
+                     <a ng-click="filterListExpand = !filterListExpand">
+                         <h1>{{ gerechten.length }}</h1>
+                     </a>
+                 </span>
+             </div>
+
+             <div class="filterList" ng-show="filterListExpand">
+                 <h1>Kies een filter</h1>
+                 <ul>
+                     <li class="favorite">Favorieten</li>
+                     <li class="veggie">Vegetarisch</li>
+                     <li class="recent">Recent gegeten</li>
+                     <li>Geavanceerde filter</li>
+                 </ul>
+             </div>
+
              <div class="boodschappenLijst" ng-show="shoppingListExpand">
                  <h1>Boodschappen</h1>
                  <div class="shoppingList">
@@ -37,6 +55,8 @@
                  </div>
                  <p ng-if="boodschappen.length < 1" class="infotext">Uw boodschappenlijst is leeg, voeg gerechten of planners toe</p>
              </div>
+
+
 
              <div class="gerechtToevoegen" ng-show="showModalAddDish">
                  <div class="popup">
