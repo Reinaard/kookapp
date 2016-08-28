@@ -17,6 +17,7 @@
         <script src="main.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
     </head>
     <body ng-app="kookApp">
          <div ng-controller="kookController">
@@ -200,46 +201,17 @@
                  </div>
              </div>
 
-
-
-
-
-             <h1>
-                 <a href="" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
-             </h1>
-             <h1>
-                 <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner">Planner Toevoegen</a>
-             </h1>
-
-             <div>
+             <!-- <div>
                  <input type="text" ng-modal="generalSeach" placeholder="Zoeken..."/>
+             </div>      -->
+             <div class="header">
+                 <h1>De Kookapp</h1>
              </div>
-
-
-
-
-
-            <div class="mainMenu gerechtMenu">
-                <a href="" class="addToList" ng-click="showModalAddDish = !showModalAddDish">Gerecht Toevoegen</a>
-                <a href ng-click="hideDishes = !hideDishes">
-                    <h1>Gerechten</h1>
-                </a>
-                <ul class="dishUL" ng-hide="hideDishes">
-                    <li ng-repeat="gerecht in gerechten">
-                        <a ng-click="popUP(gerecht)">
-                            <ul>
-                                <li class="dishItemName">{{ gerecht.name }}</li>
-                                <li class="ingredientCount">{{ gerecht.ingredienten.length }} ingredienten</li>
-                            </ul>
-                        </a>
-                    </li>
-                </ul>
-            </div>
              <div class="mainMenu plannerMenu">
-                 <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner">Planner Toevoegen</a>
-                 <a ng-click="hidePlanners = ! hidePlanners" href="">
+                 <a ng-click="hidePlanners = ! hidePlanners" href="" class="title">
                      <h1>Planners</h1>
                  </a>
+                 <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner" class="add">+</a>
                  <ul ng-show="hidePlanners">
                      <li ng-repeat="planner in planners">
                          <a ng-click="showPlannerDetails = ! showPlannerDetails" href="">{{ planner.name }}</a>
@@ -251,9 +223,22 @@
                      </li>
                  </ul>
              </div>
-
-
-
+            <div class="mainMenu gerechtMenu">
+                <a href ng-click="hideDishes = !hideDishes" class="title">
+                    <h1>Gerechten</h1>
+                </a>
+                <a href="" class="add" ng-click="showModalAddDish = !showModalAddDish">+</a>
+                <ul class="dishUL" ng-show="hideDishes">
+                    <li ng-repeat="gerecht in gerechten">
+                        <a ng-click="popUP(gerecht)">
+                            <ul>
+                                <li class="dishItemName">{{ gerecht.name }}</li>
+                                <li class="ingredientCount">{{ gerecht.ingredienten.length }} ingredienten</li>
+                            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
