@@ -229,7 +229,7 @@ button[disabled] {
     height: 70%;
 }
 .boodschappenLijst span {
-    color:gray
+    color:#393939;
 }
 
 .boodschappenLijst label {
@@ -243,11 +243,11 @@ button[disabled] {
 }
 
 .boodschappenLijst label:nth-child(odd) {
-    background: #ededed;
+    background: rgba(255, 255, 255, 0.22);
 }
 
 .boodschappenLijst label:nth-child(even) {
-    background: white;
+    background: rgba(255, 255, 255, 0.47);
 }
 
 .float-right {
@@ -481,4 +481,12 @@ input[type=checkbox]{
 .infotext {
     color: #5a5a5a;
     padding: 60px 60px;
+}
+
+.labelDisable {
+    background-color: rgb(242, 242, 242) !important;
+    color: #d1d1d1 !important;
+    background-image:url('img/checkmark.png') !important;
+    background-repeat: no-repeat !important;
+    background-position: 6px 5px !important;
 }

@@ -141,6 +141,7 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		for(var i = 0; i < objectArray.length; i++) {
 			var ingredienten = objectArray[i].ingredienten;
 			for (var j = 0; j < ingredienten.length; j++) {
+				ingredienten[j].selected = '';
 				$scope.addToShoppingList(ingredienten[j]);
 			}
 		}
@@ -172,6 +173,18 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		}
 	};
 
+	$scope.getGroceryTotal = function() {
+		var notChecked = 0;
+		if($scope.boodschappen.length > 0) {
+			for(var i= 0; i<$scope.boodschappen.length; i++) {
+				if(!$scope.boodschappen[i].selected) {
+					notChecked++;
+				}
+			}
+		}
+
+		return notChecked;
+	};
 
 	$scope.popUP = function(gerecht) {
 		$scope.selectedDish = gerecht;

@@ -22,14 +22,14 @@
          <div ng-controller="kookController">
              <span class="groceryBtn-container">
                  <a ng-click="shoppingListExpand = !shoppingListExpand">
-                     <h1>{{boodschappen.length}}</h1>
+                     <h1>{{getGroceryTotal()}}</h1>
                  </a>
             </span>
              <div class="boodschappenLijst" ng-show="shoppingListExpand">
                  <h1>Boodschappen</h1>
-                 <div class="shoppingList" >
-                     <label ng-repeat="boodschap in boodschappen">
-                         <input ng-click="toggle(boodschap, '')" type="checkbox" ng-model="boodschap.selected" />
+                 <div class="shoppingList">
+                     <label ng-repeat="boodschap in boodschappen | orderBy:'selected'" ng-class="{'labelDisable' : boodschap.selected};" ng-init="boodschap.selected = false;">
+                         <input type="checkbox" ng-model="boodschap.selected"/>
                          {{boodschap.dishName}}
                          <span class="float-right">{{boodschap.gewicht}} gram</span>
                      </label>
