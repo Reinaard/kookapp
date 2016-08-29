@@ -280,7 +280,6 @@ input[type=checkbox]{
 /* gerechtMenu */
 .gerechtMenu {
     background-color: #0CBAC2;
-    padding: 12px;
 }
 
 .dishUL ul {
@@ -322,6 +321,9 @@ input[type=checkbox]{
 }
 
 /* Main menu */
+.mainMenu {
+    padding: 12px;
+}
 .mainMenu h1 {
     text-decoration: none;
 }
