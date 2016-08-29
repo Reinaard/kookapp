@@ -124,7 +124,9 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		for(var i = 0; i < boodschappenLijst.length; i++) {
 			if(ingredient.dishName == boodschappenLijst[i].dishName) {
 				alreadyAdded = true;
-				boodschappenLijst[i].gewicht += ingredient.gewicht;
+				var int1 = parseInt(boodschappenLijst[i].gewicht);
+				var int2 = parseInt(ingredient.gewicht);
+				boodschappenLijst[i].gewicht = int1+int2;
 			}
 		}
 		if(!alreadyAdded) {
@@ -136,8 +138,8 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 		}
 	}
 
-	$scope.getShoppingList = function() {
-		var objectArray = $scope.selectedPlanner;
+	$scope.getShoppingList = function(gerechtenToAdd) {
+		var objectArray = gerechtenToAdd;
 		for(var i = 0; i < objectArray.length; i++) {
 			var ingredienten = objectArray[i].ingredienten;
 			for (var j = 0; j < ingredienten.length; j++) {

@@ -45,6 +45,10 @@
              </div>
 
              <div class="boodschappenLijst" ng-show="shoppingListExpand">
+                 <div class="listMenu">
+                     <button>Verwijder</button>
+                     <button>Alles</button>
+                 </div>
                  <h1>Boodschappen</h1>
                  <div class="shoppingList">
                      <label ng-repeat="boodschap in boodschappen | orderBy:'selected'" ng-class="{'labelDisable' : boodschap.selected};" ng-init="boodschap.selected = false;">
@@ -214,7 +218,6 @@
                              </li>
                          </ol>
 
-                         <button ng-click="getShoppingList()" ng-disabled="checkAddPlanner(nieuwPlanner)" class="gerechtToevoegenButton popup-boodschappenlijst">Maak een boodschappenlijst</button>
                          <button ng-click="addPlanner(nieuwPlanner)" ng-disabled="checkAddPlanner(nieuwPlanner)" class="gerechtToevoegenButton">Maak nieuwe planner</button>
 
                      </div>
@@ -232,32 +235,60 @@
                      <h1>Planners</h1>
                  </a>
                  <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner" class="add">+</a>
-                 <ul ng-show="hidePlanners">
-                     <li ng-repeat="planner in planners">
-                         <a ng-click="showPlannerDetails = ! showPlannerDetails" href="">{{ planner.name }}</a>
-                         <ul>
-                             <li ng-repeat="gerecht in planner.gerechten" ng-show="showPlannerDetails">
+                 <ul ng-hide="hidePlanners"  ng-init="planLimit = 3">
+                     <li class="plannerHeader" ng-repeat="planner in planners | limitTo:planLimit">
+                         <div class="addToGroceries" ng-click="getShoppingList(planner.gerechten)"></div>
+                         <a ng-click="showPlannerDetails = ! showPlannerDetails" href="">
+                             {{ planner.name }}
+                         </a>
+                         <ol>
+                             <li ng-repeat="gerecht in planner.gerechten" ng-hide="showPlannerDetails">
                                  {{gerecht.name}}
                              </li>
-                         </ul>
+                         </ol>
                      </li>
                  </ul>
+                 <div class="showAll" ng-show="planLimit < planners.length">
+                     <a href="" ng-click="planLimit = planLimit +10">
+                         > Meer planners
+                     </a>
+                 </div>
+                 <div class="showAll" ng-show="planLimit >= planners.length">
+                     <a href="" ng-click="planLimit = planLimit -10">
+                         > Minder planners
+                     </a>
+                 </div>
              </div>
             <div class="mainMenu gerechtMenu">
                 <a href ng-click="hideDishes = !hideDishes" class="title">
                     <h1>Gerechten</h1>
                 </a>
                 <a href="" class="add" ng-click="showModalAddDish = !showModalAddDish">+</a>
-                <ul class="dishUL" ng-show="hideDishes">
-                    <li ng-repeat="gerecht in gerechten">
+                <ul class="dishUL" ng-hide="hideDishes" ng-init="dishLimit = 6">
+                    <li ng-repeat="gerecht in gerechten | limitTo:dishLimit">
                         <a ng-click="popUP(gerecht)">
                             <ul>
-                                <li class="dishItemName">{{ gerecht.name }}</li>
-                                <li class="ingredientCount">{{ gerecht.ingredienten.length }} ingredienten</li>
+                                <li class="dishItemName">
+                                    {{ gerecht.name }}
+                                </li>
+                                <li class="ingredientCount">
+                                    {{ gerecht.ingredienten.length }} ingredienten
+                                </li>
                             </ul>
                         </a>
                     </li>
                 </ul>
+                <div class="showAll" ng-show="dishLimit < gerechten.length">
+                    <a href="" ng-click="dishLimit = dishLimit +10">
+                        > Meer gerechten
+                    </a>
+                </div>
+                <div class="showAll" ng-show="dishLimit >= gerechten.length">
+                    <a href="" ng-click="dishLimit = dishLimit -10">
+                        > Minder gerechten
+                    </a>
+                </div>
+
             </div>
         </div>
     </body>
