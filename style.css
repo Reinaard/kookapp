@@ -11,7 +11,10 @@ h1 {
     color: #FFFFFF;
     text-shadow: 2px 2px #c1b9b9;
 }
-
+h3 {
+    margin: 0px;
+    margin: 0px 0px 12px 0px;
+}
 /* Header */
 .header {
     min-height: 90px;
@@ -24,18 +27,22 @@ h1 {
 }
 
 .addDish, .aside {
-    height: 520px;
+    background-color: #0CBAC2;
     display:inline-block;
     vertical-align: top;
-    background:lightgray;
     padding: 13px 13px;
-    border-radius: 7px;
+    /*border-radius: 7px;*/
+}
+.addPlanner {
+    background: #ffcc34;
 }
 .addDish {
-    width: 96%;
+    width: 86%;
+    margin: 4%;
 }
 .aside {
-    width: 96%;
+    width: 86%;
+    margin: 4%;
     overflow-x: hidden;
     margin-top: 11px;
 }
@@ -50,9 +57,14 @@ h1 {
     height: 100%;
     padding-top: 100px;
     z-index: 3;
+    overflow: scroll;
 }
 .aside {
-    background:lightgray;
+    /*background: #ffcc34;*/
+}
+
+.addDish p {
+    margin-bottom: -4px;
 }
 
 .dishIngredientList li {
@@ -64,7 +76,7 @@ h1 {
 }
 .ingredientenlijst {
     font-size: 18px;
-    height: 318px;
+    height: 255px;
     overflow-x: hidden;
     background-color: rgba(255,255,255,0.5);
 }
@@ -99,8 +111,7 @@ button[disabled] {
     padding: 8px;
     padding-left:12px;
     font-size: 18px;
-    border-radius: 7px;
-    background-color: hsla(0, 0%, 100%, 0.4);
+    /*border-radius: 7px;*/
     box-shadow: inset 1px 2px 2px rgba(0,0,0,0.2);
     border: none;
     margin-bottom: 5px;
@@ -116,11 +127,11 @@ button[disabled] {
 }
 
 .searchAndAddField {
-    width: 289px; !important;
+    width: 305px !important;
 }
 
 .nameInputField {
-    width: 94%;
+    width: 94% !important;
 }
 
 .addDish button {
@@ -343,11 +354,11 @@ input[type=checkbox]{
 
 .ingredientCategory {
     background-repeat: no-repeat;
-    background-position: right 10px top 6px;
+    background-position: right 6px top 6px;
     font-size: 22px;
 }
 .ingredientCategory h3 {
-    padding: 16px;
+    padding: 4px 16px;
     margin: 0px;
 }
 .categoryVeg{
@@ -355,7 +366,7 @@ input[type=checkbox]{
     background-image:url('img/ingrCategories/vegetable.png');
 }
 .categoryFish {
-    background-color:#fab243;
+    background-color: #ffcc34;
     background-image:url('img/ingrCategories/fish.png');
 }
 .categoryDairy {
@@ -429,19 +440,16 @@ input[type=checkbox]{
         padding-top: 17px;
     }
     .popup {
-        width: 90%;
+        width: 95%;
         border-radius: 7px;
         padding: 0px;
-        height:90%;
+        margin-bottom: 28px;
     }
     .close {
         font-size: 25px;
         right: 9px;
         top: 32px;
         padding: 16px 11px 17px 10px;
-    }
-    .addDish, .aside {
-        height: 91%;
     }
     .dishImage {
         height: 33%;
@@ -450,7 +458,6 @@ input[type=checkbox]{
         max-height: 103px;
     }
     .aside {
-        width: 92%;
         overflow-x: hidden;
         margin-top: 0px;
     }
@@ -619,4 +626,8 @@ input[type=checkbox]{
     font-weight: bold;
     padding-top: 12px;
     font-size: 16px;
+}
+
+.searchListInput {
+    width: 94% !important;
 }

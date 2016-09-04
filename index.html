@@ -67,21 +67,20 @@
                      <span class="close" ng-click="showModalAddDish = !showModalAddDish">x</span>
                      <div class="addDish">
 
-                        <h3>1. Gerechtnaam invoeren</h3>
-                        <input type="text" ng-model="nieuwGerecht.name" placeholder="Nasi, Pasta, etc..." class="nameInputField">
+                        <h3>Gerecht toevoegen</h3>
+                        <input type="text" ng-model="nieuwGerecht.name" placeholder="Nieuwe gerechtnaam..." class="nameInputField">
 
-                        <h3>2. Ingredienten selecteren </h3>
 
                          <div class="listSearchWrapper">
-                            <input class="searchAndAddField" type="text" ng-model="ingredientenLijst" placeholder="Zoek een ingredient..."/>
+                            <input class="searchAndAddField" type="text" ng-model="ingredientenLijst" placeholder="Ingredienten toevoegen..."/>
                             <button ng-click="addIngredient(ingredientenLijst)">+</button>
                         </div>
                         <div class="ingredientenlijst">
-                            <select ng-model="ingredientCatFilter">
-                                <option>dairy</option>
-                                <option>meat</option>
-                            </select>
-                            {{ingredientCatFilter}}
+                            <!--<select ng-model="ingredientCatFilter">-->
+                                <!--<option>dairy</option>-->
+                                <!--<option>meat</option>-->
+                            <!--</select>-->
+                            <!--{{ingredientCatFilter}}-->
 
                             <div class="ingredientCategory categoryFish">
                                 <h3 ng-show="(ingredienten | filter:filterIngredients | filter: { category: 'fish' }).length">Vis</h3>
@@ -190,17 +189,16 @@
              <div class="plannerToevoegen" ng-show="showModalAddPlanner">
                  <div class="popup">
                      <span class="close" ng-click="showModalAddPlanner = !showModalAddPlanner">x</span>
-                     <div class="addDish">
-                         <h3>1. Planner naam invoeren</h3>
-                         <input type="text" ng-model="nieuwPlanner.name" placeholder="Week 1, Weekend, etc..." class="nameInputField" />
+                     <div class="addDish addPlanner">
+                         <h3>Planner toevoegen</h3>
+                         <input type="text" ng-model="nieuwPlanner.name" placeholder="Nieuwe plannernaam..." class="nameInputField" />
 
                          <p>
-                             <h3>2. Gerechten selecteren</h3>
-                             <input type="text" placeholder="Zoek een gerecht" class="searchAndAddField" ng-model="gerechtenLijst">
+                             <input type="text" placeholder="Gerechten toevoegen..." class="searchAndAddField" ng-model="gerechtenLijst">
                              <button ng-click="showModalAddDish = !showModalAddDish">+</button>
 
                              <div class="ingredientenlijst">
-                                 <label ng-repeat="gerecht in gerechten | filter:filterDish:gerechtenLijst:gerechten | orderBy:'gerecht.name'">
+                                 <label ng-repeat="gerecht in gerechten | filter:filterDish | orderBy:'gerecht.name'">
                                      <input ng-click="toggle(gerecht, 'gerechtPlanner')" type="checkbox"/>
                                      {{gerecht.name}}
                                  </label>
@@ -208,7 +206,7 @@
                          </p>
                      </div>
 
-                     <div class="aside">
+                     <div class="aside addPlanner">
                          <h3>3. Resultaat bekijken</h3>
                          <h1>{{nieuwPlanner.name}}</h1>
                          <h4>Gerechten</h4>
@@ -232,7 +230,9 @@
              </div>
              <div class="mainMenu plannerMenu">
                  <a ng-click="hidePlanners = ! hidePlanners" href="" class="title">
-                     <h1>Planners</h1>
+                     <h1>
+                         Planners
+                     </h1>
                  </a>
                  <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner" class="add">+</a>
                  <ul ng-hide="hidePlanners"  ng-init="planLimit = 3">
@@ -259,13 +259,18 @@
                      </a>
                  </div>
              </div>
+
+
             <div class="mainMenu gerechtMenu">
                 <a href ng-click="hideDishes = !hideDishes" class="title">
-                    <h1>Gerechten</h1>
+                    <h1>
+                        Gerechten
+                    </h1>
                 </a>
                 <a href="" class="add" ng-click="showModalAddDish = !showModalAddDish">+</a>
+                <!--<input type="text" placeholder="Zoeken..." ng-modal="gerechtenLijstMenu" class="searchListInput"/>-->
                 <ul class="dishUL" ng-hide="hideDishes" ng-init="dishLimit = 6">
-                    <li ng-repeat="gerecht in gerechten | limitTo:dishLimit">
+                    <li ng-repeat="gerecht in gerechten | filter:filterDish">
                         <a ng-click="popUP(gerecht)">
                             <ul>
                                 <li class="dishItemName">

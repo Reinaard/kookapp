@@ -30,9 +30,10 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	};
 
 	$scope.filterIngredients = function(arg) {
-
+		// console.log("input filterIngredients: ",arg);
+		// console.log("input filterIngredients name: ",arg.name);
 		var inputName = $scope.ingredientenLijst;
-
+		// console.log("input name: ",inputName);
 		if (inputName != undefined && inputName != "") {
 			if (arg.name.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
 				return true;
@@ -45,12 +46,12 @@ app.controller('kookController', ['$scope','Gerecht','Ingredient','Planner', fun
 	};
 
 	$scope.filterDish = function(arg) {
-		// console.log("input filterDish ",arg);
-		// console.log("input filterDish name ",arg.name);
+		console.log("input filterDish: ",arg);
+		console.log("input filterDish name: ",arg.name);
 
 		var inputName = $scope.gerechtenLijst;
 		var item = arg.name;
-		// console.log("input naam ",inputName);
+		console.log("input name: ",inputName);
 
 		if (inputName != undefined && inputName != "") {
 			if (item.toLowerCase().indexOf(inputName.toLowerCase()) !== -1) {
