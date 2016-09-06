@@ -13,7 +13,7 @@ h1 {
 }
 h3 {
     margin: 0px;
-    margin: 0px 0px 12px 0px;
+    margin: 4px 0px 12px 0px;
 }
 /* Header */
 .header {
@@ -128,16 +128,19 @@ button[disabled] {
 }
 
 .searchAndAddField {
-    width: 305px !important;
+    width: 92% !important;
+    margin: 2%;
+    font-size: 18px;
+    padding: 8px !important;
 }
 
 .nameInputField {
     position: fixed;
-    top: 17px;
-    width: 74%;
-    left: 9%;
-    font-size: 22px;
-    padding: 19px !important;
+    top: 0px;
+    width: 100%;
+    left: 0%;
+    font-size: 18px;
+    padding: 10px 12px !important;
     box-shadow: rgba(63, 63, 63, 0.5) 3px 2px 15px !important;
 }
 
@@ -185,6 +188,7 @@ button[disabled] {
     box-shadow: 2px 2px 9px rgba(0,0,0, 0.5);
     margin-top: -31px;
     margin-right: -8px;
+    z-index: 999;
 }
 
 .close:hover,
@@ -646,5 +650,8 @@ input[type=checkbox]{
 
 
 .buttonConfirm {
-    background: linear-gradient(to bottom, #9dd53a 0%, #a1d54f 37%, #80c217 71%, #7cbc0a 100%) !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: gray;
+    font-size: 18px;
+    margin-top: 5px;
+    padding-left: 31px !important;
 }
