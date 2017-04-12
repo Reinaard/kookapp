@@ -33,7 +33,6 @@
                      </a>
                  </span>
              </div>
-
              <div class="filterList" ng-show="filterListExpand">
                  <h1>Kies een filter</h1>
                  <ul>
@@ -43,7 +42,6 @@
                      <li>Geavanceerde filter</li>
                  </ul>
              </div>
-
              <div class="boodschappenLijst" ng-show="shoppingListExpand">
                  <div class="listMenu">
                      <button>Verwijder</button>
@@ -59,9 +57,6 @@
                  </div>
                  <p ng-if="boodschappen.length < 1" class="infotext">Uw boodschappenlijst is leeg, voeg gerechten of planners toe</p>
              </div>
-
-
-
              <div class="gerechtToevoegen" ng-show="showModalAddDish">
                  <div class="popup">
                      <span class="close" ng-click="showModalAddDish = !showModalAddDish">x</span>
@@ -150,11 +145,8 @@
                          <button ng-click="addGerecht(nieuwGerecht)" ng-disabled="checkAddDish(nieuwGerecht)" class="gerechtToevoegenButton">Gerecht toevoegen</button>
                          <div class="notification" ng-show="savedGerecht" class="notification-show-hide">note</div>
                      </div>
-
                  </div>
-
              </div>
-
              <div class="gerecht" ng-show="showModalDish">
                  <div class="popup">
                      <span class="close" ng-click="showModalDish = !showModalDish">x</span>
@@ -181,12 +173,6 @@
                      </div>
                  </div>
              </div>
-
-
-
-
-
-
              <div class="plannerToevoegen" ng-show="showModalAddPlanner">
                  <div class="popup">
                      <span class="close" ng-click="showModalAddPlanner = !showModalAddPlanner">x</span>
@@ -216,61 +202,43 @@
                                  {{item.name}}
                              </li>
                          </ol>
-
                          <button ng-click="addPlanner(nieuwPlanner)" class="addButton" ng-disabled="checkAddPlanner(nieuwPlanner)" class="gerechtToevoegenButton">Maak nieuwe planner</button>
-
                      </div>
                  </div>
-             </div>
-
-             <!-- <div>
-                 <input type="text" ng-modal="generalSeach" placeholder="Zoeken..."/>
-             </div>      -->
+             </div>     -->
              <div class="header">
                  <h1>De Kookapp</h1>
              </div>
              <div class="mainMenu plannerMenu">
                  <a ng-click="hidePlanners = ! hidePlanners" href="" class="title">
-                     <h1>
+                     <h2>
                          Planners
-                     </h1>
+                     </h2>
                  </a>
                  <a href="" ng-click="showModalAddPlanner = !showModalAddPlanner" class="add">+</a>
-                 <ul ng-hide="hidePlanners"  ng-init="planLimit = 3">
+                 </div>
+                 <ul ng-show="hidePlanners"  ng-init="planLimit = 3">
                      <li class="plannerHeader" ng-repeat="planner in planners | limitTo:planLimit">
                          <div class="addToGroceries" ng-click="getShoppingList(planner.gerechten)"></div>
                          <a ng-click="showPlannerDetails = ! showPlannerDetails" href="">
                              {{ planner.name }}
                          </a>
                          <ol>
-                             <li ng-repeat="gerecht in planner.gerechten" ng-hide="showPlannerDetails">
+                             <li ng-repeat="gerecht in planner.gerechten" ng-show="showPlannerDetails">
                                  {{gerecht.name}}
                              </li>
                          </ol>
                      </li>
                  </ul>
-                 <div class="showAll" ng-show="planLimit < planners.length">
-                     <a href="" ng-click="planLimit = planLimit +10">
-                         > Meer planners
-                     </a>
-                 </div>
-                 <div class="showAll" ng-show="planLimit >= planners.length">
-                     <a href="" ng-click="planLimit = planLimit -10">
-                         > Minder planners
-                     </a>
-                 </div>
              </div>
-
-
             <div class="mainMenu gerechtMenu">
                 <a href ng-click="hideDishes = !hideDishes" class="title">
-                    <h1>
+                    <h2>
                         Gerechten
-                    </h1>
+                    </h2>
                 </a>
                 <a href="" class="add" ng-click="showModalAddDish = !showModalAddDish">+</a>
-                <!--<input type="text" placeholder="Zoeken..." ng-modal="gerechtenLijstMenu" class="searchListInput"/>-->
-                <ul class="dishUL" ng-hide="hideDishes" ng-init="dishLimit = 6">
+                <ul class="dishUL" ng-show="hideDishes" ng-init="dishLimit = 6">
                     <li ng-repeat="gerecht in gerechten | filter:filterDish">
                         <a ng-click="popUP(gerecht)">
                             <ul>
@@ -284,17 +252,6 @@
                         </a>
                     </li>
                 </ul>
-                <div class="showAll" ng-show="dishLimit < gerechten.length">
-                    <a href="" ng-click="dishLimit = dishLimit +10">
-                        > Meer gerechten
-                    </a>
-                </div>
-                <div class="showAll" ng-show="dishLimit >= gerechten.length">
-                    <a href="" ng-click="dishLimit = dishLimit -10">
-                        > Minder gerechten
-                    </a>
-                </div>
-
             </div>
         </div>
     </body>
